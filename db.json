@@ -1,0 +1,404 @@
+{
+  "homepage": {
+    "data": {
+      "seo": {
+        "id": 5,
+        "metaTitle": "Mithun raj",
+        "metaDescription": "This is my personal portfolio site",
+        "metaOgImage": "",
+        "keywords": null,
+        "metaRobots": null,
+        "structuredData": null,
+        "metaViewport": null,
+        "canonicalURL": null,
+        "metaImage": {
+          "url": {
+            "alternativeText": null
+          },
+          "alternativeText": null
+        },
+        "metaSocial": []
+      },
+      "widgets": [
+        {
+          "widget_type": "HomeBanner",
+          "data": {
+            "title": "FRONTEND DEVELOPER"
+         
+          }
+        },
+        {
+          "widget_type": "HomeAbout",
+          "data": {
+            "title": "MITHUN RAJ",
+            "description": "I'm a lead WebApp Developer and Digital Designer building scalable, accessible, and technically tuned brands on the web.",
+            "link": {
+              "text": "ABOUT ME",
+              "url": "/about"
+            },
+            "stack_title": "SERVICE TYPE",
+            "stack": [
+              {
+                "title": "Web Application",
+                "link": {
+                  "text": "KNOW MORE",
+                  "url": "/"
+                }
+              },
+              {
+                "title": "Prograssive Web Application",
+                "link": {
+                  "text": "KNOW MORE",
+                  "url": "/"
+                }
+              },
+              {
+                "title": "Decentralized applications",
+                "link": {
+                  "text": "KNOW MORE",
+                  "url": "/"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "widget_type": "HomeWorks",
+          "data": {
+            "title": "FEATURED WORK",
+            "works": [
+              {
+                "date": "2020",
+                "title": "website",
+                "image": "/images/works/work-1.png",
+                "stack": "",
+                "url": "/"
+              },
+              {
+                "date": "2020",
+                "title": "website",
+                "image": "/images/works/work-2.png",
+                "stack": "",
+                "url": "/"
+              },
+              {
+                "date": "2020",
+                "title": "website",
+                "image": "/images/works/work-1.png",
+                "stack": "",
+                "url": "/"
+              },
+              {
+                "date": "2020",
+                "title": "website",
+                "image": "/images/works/work-2.png",
+                "stack": "",
+                "url": "/"
+              }
+            ]
+          }
+        },
+        {
+          "widget_type": "HomePrinciples",
+          "data": {
+            "title": "PRINCIPLES",
+            "main_title": "<span>DESIGN MEETS</span><span> DEVELOPMENT</span>",
+            "principles": [
+              {
+                "title": "Systems-first",
+                "description": "Building systems for anything from design and development, to scoping and documentation is at the core of my process to driving results for every project I work on."
+              },
+              {
+                "title": "Accessibility and Usability",
+                "description": "Accessibility and usability are two important principles of front-end development that aim to make a website or web application easy to use and understand for all users, regardless of their abilities, preferences, or devices"
+              },
+              {
+                "title": "Performance and Optimization",
+                "description": "Performance and optimization are two related principles of front-end development that aim to make a website or web application fast and reliable for users."
+              },
+              {
+                "title": "Responsiveness and Cross-Browser Compatibility",
+                "description": "Responsiveness and cross-browser compatibility are two essential principles of front-end development that aim to make a website or web application adaptable and consistent across different devices and browsers"
+              },
+              {
+                "title": "Testing and Debugging",
+                "description": "Testing and debugging are essential for web development, as they prevent problems, improve user experience, increase trust and ensure the quality."
+              }
+            ]
+          }
+        },
+        {
+          "widget_type": "HomeHire",
+          "data": {
+            "title": "SERVICES",
+            "main_title": "HIRE ME",
+            "services": [
+              {
+                "title": "Consulting ",
+                "description": "Agencies and in-house teams hire me to be embedded on their team for direct support on strategy, scoping, custom code, and training."
+              },
+              {
+                "title": "Design ",
+                "description": "From strategy and brand, to web and product design, I help teams bring businesses to life with modern, memorable and minimal creative work."
+              },
+              {
+                "title": "Development ",
+                "description": "With 2+ years creating for the web, I can join your upcoming project to lead development in a design-first, systematic way that will scale with your brand."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "about": {
+    "data": {
+      "widgets": [
+        {
+          "widget_type": "AboutBanner",
+          "data": {
+            "title": "CREATIVE MEETS TECHNICAL",
+            "image":"/images/about-me.png",
+            "description": "I'm a midwest family man with a love for design and front-end development. I have a deep desire to consistently learn from others and fuel my skills to design timeless brands, then develop them into reality with code."
+          }
+        },
+        {
+          "widget_type": "AboutJourney",
+          "data":{
+            "title":"CAREER",
+            "career":[
+              {
+                "start_date":"04-05-2002",
+                "end_date":"till now",
+                "experince":"2",
+                "designation":"Frontend Developer",
+                "company_name":"Webandcrafts",
+                "url":""
+              },
+              {
+                "start_date":"04-05-2002",
+                "end_date":"till now",
+                "experince":"2",
+                "designation":"Frontend Developer",
+                "company_name":"Webandcrafts",
+                "url":""
+              },
+              {
+                "start_date":"04-05-2002",
+                "end_date":"till now",
+                "experince":"2",
+                "designation":"Frontend Developer",
+                "company_name":"Webandcrafts",
+                "url":""
+              }
+            ]
+          }
+        },
+        {
+          "widget_type": "AboutSkills",
+          "data":{
+            "title":"TECH STACK",
+            "skills":[
+                {
+                  "name":"HTML5",
+                  "image":"/images/skills/Html5_logo.svg"
+                },
+                {
+                  "name":"CSS",
+                   "image":"/images/skills/cSS_logo.svg"
+                },
+                {
+                  "name":"JAVASCRIPT",
+                   "image":"/images/skills/Javascript_logo.svg"
+                },
+               
+                {
+                  "name":"TYPESCRIPT",
+                   "image":"/images/skills/Typescript_logo.svg"
+                },
+                {
+                  "name":"REACT",
+                   "image":"/images/skills/React_logo.svg"
+                },
+                {
+                  "name":"NEXTJS",
+                   "image":"/images/skills/Nextjs_logo.svg"
+                },
+                {
+                  "name":"VUEJS",
+                   "image":"/images/skills/Vuejs_logo.svg"
+                },
+                {
+                  "name":"NUXT3",
+                   "image":"/images/skills/Nuxt_logo.svg"
+                },
+                {
+                  "name":"BOOTSTRAP",
+                   "image":"/images/skills/Bootstrap_logo.svg"
+                },
+                {
+                  "name":"TAILWIND",
+                   "image":"/images/skills/Tailwind_logo.svg"
+                },
+                {
+                  "name":"SASS",
+                   "image":"/images/skills/Sass_logo.svg"
+                },
+                {
+                  "name":"WORDPRESS",
+                   "image":"/images/skills/Wordpress_logo.svg"
+                }
+            ]
+          }
+        },
+        {
+          "widget_type": "HomeHire",
+          "data": {
+            "title": "SERVICES",
+            "main_title": "HIRE ME",
+            "services": [
+              {
+                "title": "Consulting ",
+                "description": "Agencies and in-house teams hire me to be embedded on their team for direct support on strategy, scoping, custom code, and training."
+              },
+              {
+                "title": "Design ",
+                "description": "From strategy and brand, to web and product design, I help teams bring businesses to life with modern, memorable and minimal creative work."
+              },
+              {
+                "title": "Development ",
+                "description": "With 2+ years creating for the web, I can join your upcoming project to lead development in a design-first, systematic way that will scale with your brand."
+              }
+            ]
+          }
+        }
+       
+      ]
+    }
+  },
+  "works": {
+    "data": {
+      "widgets": [
+        {
+          "widget_type": "WorkList",
+          "data": {
+            "title": "Works",
+            "description": "A collection of some of my favorite Digital Design and Development projects from the past few years. 🤓",
+            "category": [
+              {
+                "value": "all",
+                "label": "All"
+              },
+              {
+                "value": "fashion",
+                "label": "Fashion"
+              },
+              {
+                "value": "media",
+                "label": "Media"
+              },
+              {
+                "value": "social",
+                "label": "Social"
+              },
+              {
+                "value": "travel-and-tourism",
+                "label": "Social"
+              },
+              {
+                "value": "electronics",
+                "label": "Electronics"
+              }
+            ],
+            "works": [
+              {
+                "date": "2020",
+                "title": "website",
+                "image": "/images/works/work-1.png",
+                "stack": "",
+                "url": "/"
+              },
+              {
+                "date": "2020",
+                "title": "website",
+                "image": "/images/works/work-2.png",
+                "stack": "",
+                "url": "/"
+              },
+              {
+                "date": "2020",
+                "title": "website",
+                "image": "/images/works/work-1.png",
+                "stack": "",
+                "url": "/"
+              },
+              {
+                "date": "2020",
+                "title": "website",
+                "image": "/images/works/work-2.png",
+                "stack": "",
+                "url": "/"
+              },
+              {
+                "date": "2020",
+                "title": "website",
+                "image": "/images/works/work-1.png",
+                "stack": "",
+                "url": "/"
+              },
+              {
+                "date": "2020",
+                "title": "website",
+                "image": "/images/works/work-2.png",
+                "stack": "",
+                "url": "/"
+              },
+              {
+                "date": "2020",
+                "title": "website",
+                "image": "/images/works/work-1.png",
+                "stack": "",
+                "url": "/"
+              },
+              {
+                "date": "2020",
+                "title": "website",
+                "image": "/images/works/work-2.png",
+                "stack": "",
+                "url": "/"
+              },
+              {
+                "date": "2020",
+                "title": "website",
+                "image": "/images/works/work-1.png",
+                "stack": "",
+                "url": "/"
+              },
+              {
+                "date": "2020",
+                "title": "website",
+                "image": "/images/works/work-2.png",
+                "stack": "",
+                "url": "/"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "contact": {
+    "data": {
+      "widgets": [
+        {
+          "widget_type": "ContactUs",
+          "data": {
+            "title": "Lets's build something great togather ",
+            "mobile": "+91 7907348596",
+            "email": "mithunmacsafe@gmail.com"
+          }
+        }
+      ]
+    }
+  }
+}
