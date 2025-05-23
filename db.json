@@ -23,7 +23,7 @@
         {
           "widget_type": "HomeBanner",
           "data": {
-            "title": "RONTEND DEVELOPER"
+            "title": "FRONTEND DEVELOPER"
          
           }
         },
@@ -143,7 +143,7 @@
               },
               {
                 "title": "Development ",
-                "description": "With 2+ years creating for the web, I can join your upcoming project to lead development in a design-first, systematic way that will scale with your brand."
+                "description": "With 3+ years creating for the web, I can join your upcoming project to lead development in a design-first, systematic way that will scale with your brand."
               }
             ]
           }
@@ -168,27 +168,27 @@
             "title":"CAREER",
             "career":[
               {
-                "start_date":"04-05-2002",
+                "start_date":"2024",
                 "end_date":"till now",
-                "experince":"2",
+                "experince":"7 months",
                 "designation":"Frontend Developer",
                 "company_name":"Webandcrafts",
                 "url":""
               },
               {
-                "start_date":"04-05-2002",
-                "end_date":"till now",
-                "experince":"2",
-                "designation":"Frontend Developer",
+                "start_date":"2022",
+                "end_date":"2024",
+                "experince":"2.5 years",
+                "designation":"UI Developer",
                 "company_name":"Webandcrafts",
                 "url":""
               },
               {
-                "start_date":"04-05-2002",
-                "end_date":"till now",
-                "experince":"2",
-                "designation":"Frontend Developer",
-                "company_name":"Webandcrafts",
+                "start_date":"2021",
+                "end_date":"2022",
+                "experince":"1 year",
+                "designation":"Python Fullstack Developer",
+                "company_name":"Right Soft Options",
                 "url":""
               }
             ]
@@ -229,7 +229,7 @@
                    "image":"/images/skills/Vuejs_logo.svg"
                 },
                 {
-                  "name":"NUXT3",
+                  "name":"GSAP",
                    "image":"/images/skills/Nuxt_logo.svg"
                 },
                 {
@@ -267,7 +267,7 @@
               },
               {
                 "title": "Development ",
-                "description": "With 2+ years creating for the web, I can join your upcoming project to lead development in a design-first, systematic way that will scale with your brand."
+                "description": "With 3+ years creating for the web, I can join your upcoming project to lead development in a design-first, systematic way that will scale with your brand."
               }
             ]
           }
