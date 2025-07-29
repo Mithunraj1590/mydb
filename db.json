@@ -314,73 +314,32 @@
               {
                 "date": "2020",
                 "title": "website",
-                "image": "/images/works/work-1.png",
+                "image": "/images/works/work1.png",
                 "stack": "",
                 "url": "/"
               },
               {
                 "date": "2020",
                 "title": "website",
-                "image": "/images/works/work-2.png",
+                "image": "/images/works/work2.png",
                 "stack": "",
                 "url": "/"
               },
               {
                 "date": "2020",
                 "title": "website",
-                "image": "/images/works/work-1.png",
+                "image": "/images/works/work3.png",
                 "stack": "",
                 "url": "/"
               },
               {
                 "date": "2020",
                 "title": "website",
-                "image": "/images/works/work-2.png",
-                "stack": "",
-                "url": "/"
-              },
-              {
-                "date": "2020",
-                "title": "website",
-                "image": "/images/works/work-1.png",
-                "stack": "",
-                "url": "/"
-              },
-              {
-                "date": "2020",
-                "title": "website",
-                "image": "/images/works/work-2.png",
-                "stack": "",
-                "url": "/"
-              },
-              {
-                "date": "2020",
-                "title": "website",
-                "image": "/images/works/work-1.png",
-                "stack": "",
-                "url": "/"
-              },
-              {
-                "date": "2020",
-                "title": "website",
-                "image": "/images/works/work-2.png",
-                "stack": "",
-                "url": "/"
-              },
-              {
-                "date": "2020",
-                "title": "website",
-                "image": "/images/works/work-1.png",
-                "stack": "",
-                "url": "/"
-              },
-              {
-                "date": "2020",
-                "title": "website",
-                "image": "/images/works/work-2.png",
+                "image": "/images/works/work4.png",
                 "stack": "",
                 "url": "/"
               }
+            
             ]
           }
         }
