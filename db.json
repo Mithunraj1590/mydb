@@ -79,7 +79,7 @@
                 "title": "Furniro",
                 "image": "/images/works/work2.png",
                 "stack": "React js",
-                "url": "/works/furniro"
+                "url": "https://furniro-on3r.vercel.app/"
               },
               {
                 "date": "2020",
