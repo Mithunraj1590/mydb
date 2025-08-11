@@ -93,7 +93,7 @@
                 "title": "E-tutor",
                 "image": "/images/works/work4.png",
                 "stack": "Vue js",
-                "url": "/works/e-tutor"
+                "url": "https://mithun-etutor-frontend.vercel.app/"
               }
             ]
           }
