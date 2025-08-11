@@ -72,7 +72,7 @@
                 "title": "Worktowander-dashboard",
                 "image": "/images/works/work1.png",
                 "stack": "Next js",
-                "url": "/works/worktowander-dashboard"
+                "url": "https://worktowander.vercel.app/admin/dashboard"
               },
               {
                 "date": "2020",
