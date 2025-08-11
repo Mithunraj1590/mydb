@@ -69,31 +69,31 @@
             "works": [
               {
                 "date": "2020",
-                "title": "website",
+                "title": "Worktowander-dashboard",
                 "image": "/images/works/work1.png",
-                "stack": "",
-                "url": "/"
+                "stack": "Next js",
+                "url": "/works/worktowander-dashboard"
               },
               {
                 "date": "2020",
-                "title": "website",
+                "title": "Furniro",
                 "image": "/images/works/work2.png",
-                "stack": "",
-                "url": "/"
+                "stack": "React js",
+                "url": "/works/furniro"
               },
               {
                 "date": "2020",
-                "title": "website",
+                "title": "MyCourse",
                 "image": "/images/works/work3.png",
-                "stack": "",
-                "url": "/"
+                "stack": "React js",
+                "url": "/works/mycourse"
               },
               {
                 "date": "2020",
-                "title": "website",
+                "title": "E-tutor",
                 "image": "/images/works/work4.png",
-                "stack": "",
-                "url": "/"
+                "stack": "Vue js",
+                "url": "/works/e-tutor"
               }
             ]
           }
