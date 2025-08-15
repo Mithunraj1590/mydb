@@ -68,28 +68,28 @@
             "title": "FEATURED WORK",
             "works": [
               {
-                "date": "2020",
+                "date": "2025",
                 "title": "Worktowander-dashboard",
                 "image": "/images/works/work1.png",
                 "stack": "Next js",
                 "url": "https://worktowander.vercel.app/admin/dashboard"
               },
               {
-                "date": "2020",
+                "date": "2024",
                 "title": "Furniro",
                 "image": "/images/works/work2.png",
                 "stack": "React js",
                 "url": "https://furniro-on3r.vercel.app/"
               },
               {
-                "date": "2020",
-                "title": "MyCourse",
+                "date": "2023",
+                "title": "University Library",
                 "image": "/images/works/work3.png",
-                "stack": "React js",
-                "url": "/works/mycourse"
+                "stack": "Next js",
+                "url": "https://university-library-frontend.vercel.app/sign-in"
               },
               {
-                "date": "2020",
+                "date": "2025",
                 "title": "E-tutor",
                 "image": "/images/works/work4.png",
                 "stack": "Vue js",
