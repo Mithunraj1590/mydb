@@ -3,14 +3,14 @@ const path = require('path');
 
 // Create server
 const server = jsonServer.create();
-const router = jsonServer.router(path.join(__dirname, './db.json'));
+const router = jsonServer.router(path.join(__dirname, '../db.json'));
 const middlewares = jsonServer.defaults();
 
 // Set default middlewares
 server.use(middlewares);
 
 // Use default router
-server.use('/api', router);
+server.use('/', router);
 
 // Export for Vercel serverless function
 module.exports = (req, res) => {
