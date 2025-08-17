@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Admin - Manage Works</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <h1 class="text-2xl font-bold">Portfolio Admin</h1>
+                <button onclick="openAddModal()" class="bg-white text-purple-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                    <i class="fas fa-plus mr-2"></i>Add New Work
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-8">
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-blue-100 text-blue-600">
+                        <i class="fas fa-briefcase text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Total Works</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="totalWorks">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-green-100 text-green-600">
+                        <i class="fas fa-star text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Featured Works</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="featuredWorks">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-purple-100 text-purple-600">
+                        <i class="fas fa-eye text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">API Status</p>
+                        <p class="text-2xl font-semibold text-green-600" id="apiStatus">Online</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Works List -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-xl font-semibold text-gray-900">Manage Works</h2>
+                <p class="text-gray-600 mt-1">Add, edit, or remove portfolio works</p>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Work</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Featured</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200" id="worksTableBody">
+                        <!-- Works will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add/Edit Modal -->
+    <div id="workModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">
+        <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-white">
+            <div class="mt-3">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-medium text-gray-900" id="modalTitle">Add New Work</h3>
+                    <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <form id="workForm" class="space-y-4">
+                    <input type="hidden" id="workId">
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Title *</label>
+                            <input type="text" id="title" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Date *</label>
+                            <input type="text" id="date" placeholder="2024" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Category *</label>
+                        <select id="category" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="">Select Category</option>
+                            <option value="Web Application">Web Application</option>
+                            <option value="E-commerce">E-commerce</option>
+                            <option value="Management System">Management System</option>
+                            <option value="Education">Education</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Short Description *</label>
+                        <textarea id="description" rows="3" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Long Description</label>
+                        <textarea id="longDescription" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Main Image URL *</label>
+                            <input type="url" id="image" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Live URL</label>
+                            <input type="url" id="liveUrl" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">GitHub URL</label>
+                        <input type="url" id="githubUrl" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Gallery Images (JSON array)</label>
+                        <textarea id="gallery" rows="2" placeholder='["/image1.jpg", "/image2.jpg"]' class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Tech Stack (JSON array)</label>
+                        <textarea id="techStack" rows="3" placeholder='[{"name": "React", "icon": "/icon.svg"}]' class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Features (JSON array)</label>
+                        <textarea id="features" rows="3" placeholder='["Feature 1", "Feature 2"]' class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Challenges</label>
+                        <textarea id="challenges" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Solutions</label>
+                        <textarea id="solutions" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                    </div>
+
+                    <div class="flex items-center">
+                        <input type="checkbox" id="featured" class="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded">
+                        <label for="featured" class="ml-2 block text-sm text-gray-900">Featured on Homepage</label>
+                    </div>
+
+                    <div class="flex justify-end space-x-3 pt-4">
+                        <button type="button" onclick="closeModal()" class="px-4 py-2 text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300 transition-colors">
+                            Cancel
+                        </button>
+                        <button type="submit" class="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors">
+                            <span id="submitBtnText">Add Work</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3 text-center">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+                    <i class="fas fa-exclamation-triangle text-red-600"></i>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900 mt-4">Delete Work</h3>
+                <div class="mt-2 px-7 py-3">
+                    <p class="text-sm text-gray-500">Are you sure you want to delete this work? This action cannot be undone.</p>
+                </div>
+                <div class="flex justify-center space-x-3 mt-4">
+                    <button onclick="closeDeleteModal()" class="px-4 py-2 text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300 transition-colors">
+                        Cancel
+                    </button>
+                    <button onclick="confirmDelete()" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let works = [];
+        let deleteWorkId = null;
+
+        // Load works on page load
+        document.addEventListener('DOMContentLoaded', loadWorks);
+
+        async function loadWorks() {
+            try {
+                const response = await fetch('/api/admin/works');
+                works = await response.json();
+                displayWorks();
+                updateStats();
+            } catch (error) {
+                console.error('Error loading works:', error);
+                showNotification('Error loading works', 'error');
+            }
+        }
+
+        function displayWorks() {
+            const tbody = document.getElementById('worksTableBody');
+            tbody.innerHTML = '';
+
+            works.forEach(work => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-gray-50';
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                            <div class="h-10 w-10 flex-shrink-0">
+                                <img class="h-10 w-10 rounded-lg object-cover" src="${work.image}" alt="${work.title}">
+                            </div>
+                            <div class="ml-4">
+                                <div class="text-sm font-medium text-gray-900">${work.title}</div>
+                                <div class="text-sm text-gray-500">${work.description.substring(0, 50)}...</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-purple-800">
+                            ${work.category}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${work.date}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        ${work.featured ? 
+                            '<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Featured</span>' : 
+                            '<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Regular</span>'
+                        }
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <button onclick="editWork(${work.id})" class="text-indigo-600 hover:text-indigo-900 mr-3">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button onclick="deleteWork(${work.id})" class="text-red-600 hover:text-red-900">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function updateStats() {
+            document.getElementById('totalWorks').textContent = works.length;
+            document.getElementById('featuredWorks').textContent = works.filter(w => w.featured).length;
+        }
+
+        function openAddModal() {
+            document.getElementById('modalTitle').textContent = 'Add New Work';
+            document.getElementById('submitBtnText').textContent = 'Add Work';
+            document.getElementById('workForm').reset();
+            document.getElementById('workId').value = '';
+            document.getElementById('workModal').classList.remove('hidden');
+        }
+
+        function editWork(id) {
+            const work = works.find(w => w.id === id);
+            if (!work) return;
+
+            document.getElementById('modalTitle').textContent = 'Edit Work';
+            document.getElementById('submitBtnText').textContent = 'Update Work';
+            document.getElementById('workId').value = work.id;
+            document.getElementById('title').value = work.title;
+            document.getElementById('date').value = work.date;
+            document.getElementById('category').value = work.category;
+            document.getElementById('description').value = work.description;
+            document.getElementById('longDescription').value = work.longDescription || '';
+            document.getElementById('image').value = work.image;
+            document.getElementById('liveUrl').value = work.liveUrl || '';
+            document.getElementById('githubUrl').value = work.githubUrl || '';
+            document.getElementById('gallery').value = work.gallery || '';
+            document.getElementById('techStack').value = work.techStack || '';
+            document.getElementById('features').value = work.features || '';
+            document.getElementById('challenges').value = work.challenges || '';
+            document.getElementById('solutions').value = work.solutions || '';
+            document.getElementById('featured').checked = work.featured;
+
+            document.getElementById('workModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('workModal').classList.add('hidden');
+        }
+
+        function deleteWork(id) {
+            deleteWorkId = id;
+            document.getElementById('deleteModal').classList.remove('hidden');
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').classList.add('hidden');
+            deleteWorkId = null;
+        }
+
+        async function confirmDelete() {
+            if (!deleteWorkId) return;
+
+            try {
+                const response = await fetch(`/api/admin/works/${deleteWorkId}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    showNotification('Work deleted successfully', 'success');
+                    loadWorks();
+                } else {
+                    showNotification('Error deleting work', 'error');
+                }
+            } catch (error) {
+                console.error('Error deleting work:', error);
+                showNotification('Error deleting work', 'error');
+            }
+
+            closeDeleteModal();
+        }
+
+        document.getElementById('workForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = {
+                title: document.getElementById('title').value,
+                date: document.getElementById('date').value,
+                category: document.getElementById('category').value,
+                description: document.getElementById('description').value,
+                longDescription: document.getElementById('longDescription').value,
+                image: document.getElementById('image').value,
+                liveUrl: document.getElementById('liveUrl').value,
+                githubUrl: document.getElementById('githubUrl').value,
+                gallery: document.getElementById('gallery').value,
+                techStack: document.getElementById('techStack').value,
+                features: document.getElementById('features').value,
+                challenges: document.getElementById('challenges').value,
+                solutions: document.getElementById('solutions').value,
+                featured: document.getElementById('featured').checked
+            };
+
+            const workId = document.getElementById('workId').value;
+            const isEdit = workId !== '';
+
+            try {
+                const url = isEdit ? `/api/admin/works/${workId}` : '/api/admin/works';
+                const method = isEdit ? 'PUT' : 'POST';
+
+                const response = await fetch(url, {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    showNotification(isEdit ? 'Work updated successfully' : 'Work added successfully', 'success');
+                    closeModal();
+                    loadWorks();
+                } else {
+                    showNotification('Error saving work', 'error');
+                }
+            } catch (error) {
+                console.error('Error saving work:', error);
+                showNotification('Error saving work', 'error');
+            }
+        });
+
+        function showNotification(message, type = 'success') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 px-6 py-3 rounded-lg text-white z-50 ${
+                type === 'success' ? 'bg-green-500' : 'bg-red-500'
+            }`;
+            notification.textContent = message;
+
+            document.body.appendChild(notification);
+
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const workModal = document.getElementById('workModal');
+            const deleteModal = document.getElementById('deleteModal');
+            
+            if (event.target === workModal) {
+                closeModal();
+            }
+            if (event.target === deleteModal) {
+                closeDeleteModal();
+            }
+        }
+    </script>
+</body>
+</html>

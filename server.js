@@ -1,30 +1,131 @@
-const jsonServer = require('json-server');
+const express = require('express');
+const cors = require('cors');
 const path = require('path');
+const db = require('./database');
 
-// Create server
-const server = jsonServer.create();
-const router = jsonServer.router(path.join(__dirname, './db.json'));
-const middlewares = jsonServer.defaults();
+const app = express();
+const PORT = process.env.PORT || 3001;
 
-// Set default middlewares
-server.use(middlewares);
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(express.static('public'));
 
-// Use default router
-server.use('/api', router);
+// Initialize database
+db.initDatabase().then(() => {
+  console.log('Database initialized successfully');
+}).catch(err => {
+  console.error('Database initialization failed:', err);
+});
 
-// Export for Vercel serverless function
-module.exports = (req, res) => {
-  // Add CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  
-  // Handle preflight requests
-  if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
+// API Routes - maintaining the same structure as db.json
+
+// Homepage API
+app.get('/api/homepage', async (req, res) => {
+  try {
+    const data = await db.getHomepage();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
-  
-  // Pass to json-server
-  server(req, res);
-};
+});
+
+// About API
+app.get('/api/about', async (req, res) => {
+  try {
+    const data = await db.getAbout();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Works API (all works)
+app.get('/api/works', async (req, res) => {
+  try {
+    const data = await db.getWorks();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Single work API
+app.get('/api/works/:slug', async (req, res) => {
+  try {
+    const data = await db.getWork(req.params.slug);
+    res.json(data);
+  } catch (error) {
+    res.status(404).json({ error: 'Work not found' });
+  }
+});
+
+// Contact API
+app.get('/api/contact', async (req, res) => {
+  try {
+    const data = await db.getContact();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Admin Routes for managing works
+
+// Get all works for admin
+app.get('/api/admin/works', async (req, res) => {
+  try {
+    const works = await db.getAllWorks();
+    res.json(works);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Add new work
+app.post('/api/admin/works', async (req, res) => {
+  try {
+    const result = await db.addWork(req.body);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Update work
+app.put('/api/admin/works/:id', async (req, res) => {
+  try {
+    const result = await db.updateWork(req.params.id, req.body);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Delete work
+app.delete('/api/admin/works/:id', async (req, res) => {
+  try {
+    const result = await db.deleteWork(req.params.id);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Serve admin interface
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+});
+
+// Default route
+app.get('/', (req, res) => {
+  res.json({ message: 'Portfolio API is running' });
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+// Export for Vercel
+module.exports = app;
