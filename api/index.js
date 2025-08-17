@@ -414,7 +414,9 @@ const data = {
                  {
            "widget_type": "WorkDetail",
            "data": {
-             "title": "About This Project",
+      
+             "title": "ABOUT",
+             "main_title": "Project",
              "description": "Worktowander Dashboard is a full-featured administrative interface designed to streamline the management of work and travel bookings. The platform provides an intuitive user experience with advanced filtering, search capabilities, and comprehensive reporting tools. Built with modern web technologies, it ensures fast performance and responsive design across all devices.",
              "details": [
                {
@@ -494,7 +496,8 @@ const data = {
                  {
            "widget_type": "WorkDetail",
            "data": {
-             "title": "About This Project",
+            "title": "ABOUT",
+            "main_title": "Project",
              "description": "A comprehensive e-commerce solution built with modern web technologies. Features include secure payment processing, inventory management, order tracking, customer analytics, and a responsive design that works seamlessly across all devices.",
              "details": [
                {
@@ -570,8 +573,8 @@ const data = {
                  {
            "widget_type": "WorkDetail",
            "data": {
-             "title": "About This Project",
-             "description": "A modern task management application designed for teams to collaborate effectively. Features real-time updates, drag-and-drop task organization, team collaboration tools, and comprehensive progress tracking with analytics.",
+            "title": "ABOUT",
+            "main_title": "Project",
              "details": [
                {
                  "title": "Challenges",
@@ -646,8 +649,8 @@ const data = {
                  {
            "widget_type": "WorkDetail",
            "data": {
-             "title": "About This Project",
-             "description": "An innovative learning platform that provides interactive video courses, personalized learning paths, and comprehensive progress tracking. Built with modern technologies to deliver an engaging educational experience.",
+            "title": "ABOUT",
+            "main_title": "Project",
              "details": [
                {
                  "title": "Challenges",
@@ -875,7 +878,8 @@ app.post('/api/admin/works', (req, res) => {
                  {
            widget_type: "WorkDetail",
            data: {
-             title: "About This Project",
+            "title": "ABOUT",
+            "main_title": "Project",
              description: req.body.longDescription || req.body.description || "",
              details: [
                {
