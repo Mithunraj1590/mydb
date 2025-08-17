@@ -308,12 +308,17 @@ app.get('/api/work/worktowander-dashboard', (req, res) => {
         },
         "widgets": [
           {
-            "widget_type": "WorkDetail",
+            "widget_type": "WorkDetailBanner",
             "data": {
               "title": "Worktowander Dashboard",
               "date": "2024",
               "category": "Web Application",
               "description": "A comprehensive admin dashboard for managing work and travel bookings. Features include user management, booking system, analytics dashboard, and real-time notifications.",
+            }
+          },
+          {
+            "widget_type": "WorkDetail",
+            "data": {
               "longDescription": "Worktowander Dashboard is a full-featured administrative interface designed to streamline the management of work and travel bookings. The platform provides an intuitive user experience with advanced filtering, search capabilities, and comprehensive reporting tools. Built with modern web technologies, it ensures fast performance and responsive design across all devices.",
               "image": "/images/works/work1.png",
               "gallery": [
@@ -374,12 +379,17 @@ app.get('/api/work/ecommerce-platform', (req, res) => {
         },
         "widgets": [
           {
-            "widget_type": "WorkDetail",
+            "widget_type": "WorkDetailBanner",
             "data": {
               "title": "E-commerce Platform",
               "date": "2024",
               "category": "E-commerce",
               "description": "Modern e-commerce platform with advanced features including payment integration, inventory management, and customer analytics.",
+            }
+          },
+          {
+            "widget_type": "WorkDetail",
+            "data": {
               "longDescription": "A comprehensive e-commerce solution built with modern web technologies. Features include secure payment processing, inventory management, order tracking, customer analytics, and a responsive design that works seamlessly across all devices.",
               "image": "/images/works/work2.png",
               "gallery": [
@@ -440,12 +450,17 @@ app.get('/api/work/task-management-app', (req, res) => {
         },
         "widgets": [
           {
-            "widget_type": "WorkDetail",
+            "widget_type": "WorkDetailBanner",
             "data": {
               "title": "Task Management App",
               "date": "2024",
               "category": "Management System",
               "description": "Collaborative task management application with real-time updates, team collaboration, and progress tracking.",
+            }
+          },
+          {
+            "widget_type": "WorkDetail",
+            "data": {
               "longDescription": "A modern task management application designed for teams to collaborate effectively. Features real-time updates, drag-and-drop task organization, team collaboration tools, and comprehensive progress tracking with analytics.",
               "image": "/images/works/work3.png",
               "gallery": [
@@ -502,12 +517,17 @@ app.get('/api/work/learning-platform', (req, res) => {
         },
         "widgets": [
           {
-            "widget_type": "WorkDetail",
+            "widget_type": "WorkDetailBanner",
             "data": {
               "title": "Learning Platform",
               "date": "2024",
               "category": "Education",
               "description": "Interactive learning platform with video courses, progress tracking, and personalized learning paths.",
+            }
+          },
+          {
+            "widget_type": "WorkDetail",
+            "data": {
               "longDescription": "An innovative learning platform that provides interactive video courses, personalized learning paths, and comprehensive progress tracking. Built with modern technologies to deliver an engaging educational experience.",
               "image": "/images/works/work4.png",
               "gallery": [
