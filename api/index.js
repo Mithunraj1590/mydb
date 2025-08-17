@@ -450,7 +450,85 @@ app.put('/api/admin/works/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const index = dynamicWorks.findIndex(work => work.id === id);
   if (index !== -1) {
+    // Update the work in the array
     dynamicWorks[index] = { ...dynamicWorks[index], ...req.body };
+    
+    // Also update the corresponding work detail page
+    const slug = req.body.slug || dynamicWorks[index].slug || dynamicWorks[index].title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    
+    // Remove old work detail if slug changed
+    const oldSlug = dynamicWorks[index].slug || dynamicWorks[index].title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    if (oldSlug !== slug && dynamicWorkDetails[oldSlug]) {
+      delete dynamicWorkDetails[oldSlug];
+    }
+    
+    // Update or create work detail page
+    dynamicWorkDetails[slug] = {
+      data: {
+        seo: {
+          metaTitle: req.body.title || dynamicWorks[index].title,
+          metaDescription: req.body.description || `Project details for ${req.body.title || dynamicWorks[index].title}`
+        },
+        slug: slug,
+        widgets: [
+          {
+            widget_type: "WorkDetailBanner",
+            data: {
+              title: req.body.title || dynamicWorks[index].title,
+              description: req.body.description || "",
+              category: req.body.category || "Web Application",
+              date: req.body.date || "2024",
+              image: req.body.image || "/images/works/default.png",
+              featured: req.body.featured || false,
+              url: req.body.links?.live || "",
+              github: req.body.links?.github || ""
+            }
+          },
+          {
+            widget_type: "AboutSkills",
+            data: {
+              title: "Tech Stack",
+              skills: req.body.techStack || [
+                {
+                  name: "React",
+                  icon: "/images/skills/React_logo.svg"
+                }
+              ]
+            }
+          },
+          {
+            widget_type: "WorkDetail",
+            data: {
+              "title": "ABOUT",
+              "main_title": "Project",
+              description: req.body.longDescription || req.body.description || "",
+              details: [
+                {
+                  title: "Challenges",
+                  description: req.body.challenges || "Technical challenges and solutions will be added here."
+                },
+                {
+                  title: "Solutions",
+                  description: req.body.solutions || "Solutions and implementation details will be added here."
+                },
+                {
+                  title: "Results",
+                  description: req.body.results || "Project results and outcomes will be added here."
+                }
+              ]
+            }
+          },
+          {
+            widget_type: "ImageGrid",
+            data: {
+              title: "Project Gallery",
+              images: req.body.gallery || [req.body.image || "/images/works/default.png"]
+            }
+          }
+        ]
+      }
+    };
+    
     res.json(dynamicWorks[index]);
   } else {
     res.status(404).json({ error: 'Work not found' });
