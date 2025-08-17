@@ -49,118 +49,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
-// Static data with complete content
+// Static data for non-dynamic pages
 const data = {
-  homepage: {
-    data: {
-      seo: { 
-        metaTitle: "Mithun raj", 
-        metaDescription: "Portfolio site" 
-      },
-      widgets: [
-        { 
-          widget_type: "HomeBanner", 
-          data: { 
-            title: "FRONTEND DEVELOPER",
-            subtitle: "Creative Web Developer",
-            description: "Building modern web applications with cutting-edge technologies"
-          } 
-        },
-        {
-          "widget_type": "HomeAbout",
-          "data": {
-            "title": "MITHUN RAJ",
-            "description": "I'm a lead WebApp Developer and Digital Designer building scalable, accessible, and technically tuned brands on the web.",
-            "link": {
-              "text": "ABOUT ME",
-              "url": "/about"
-            },
-            "stack_title": "SERVICE TYPE",
-            "stack": [
-              {
-                "title": "Web Application",
-                "link": {
-                  "text": "KNOW MORE",
-                  "url": "/"
-                }
-              },
-              {
-                "title": "Prograssive Web Application",
-                "link": {
-                  "text": "KNOW MORE",
-                  "url": "/"
-                }
-              },
-              {
-                "title": "Decentralized applications",
-                "link": {
-                  "text": "KNOW MORE",
-                  "url": "/"
-                }
-              }
-            ]
-          }
-        },
-                 {
-           widget_type: "HomeWorks",
-           data: {
-             title: "Featured Works",
-             works: dynamicWorks.slice(0, 4) // Show only first 4 works from dynamic data
-           }
-         },
-        {
-          "widget_type": "HomePrinciples",
-          "data": {
-            "title": "PRINCIPLES",
-            "main_title": "<span>DESIGN MEETS</span><span> DEVELOPMENT</span>",
-            "principles": [
-              {
-                "title": "Systems-first",
-                "description": "Building systems for anything from design and development, to scoping and documentation is at the core of my process to driving results for every project I work on."
-              },
-              {
-                "title": "Accessibility and Usability",
-                "description": "Accessibility and usability are two important principles of front-end development that aim to make a website or web application easy to use and understand for all users, regardless of their abilities, preferences, or devices"
-              },
-              {
-                "title": "Performance and Optimization",
-                "description": "Performance and optimization are two related principles of front-end development that aim to make a website or web application fast and reliable for users."
-              },
-              {
-                "title": "Responsiveness and Cross-Browser Compatibility",
-                "description": "Responsiveness and cross-browser compatibility are two essential principles of front-end development that aim to make a website or web application adaptable and consistent across different devices and browsers"
-              },
-              {
-                "title": "Testing and Debugging",
-                "description": "Testing and debugging are essential for web development, as they prevent problems, improve user experience, increase trust and ensure the quality."
-              }
-            ]
-          }
-        },
-        {
-          "widget_type": "HomeHire",
-          "data": {
-            "title": "SERVICES",
-            "main_title": "HIRE ME",
-            "services": [
-              {
-                "title": "Consulting ",
-                "description": "Agencies and in-house teams hire me to be embedded on their team for direct support on strategy, scoping, custom code, and training."
-              },
-              {
-                "title": "Design ",
-                "description": "From strategy and brand, to web and product design, I help teams bring businesses to life with modern, memorable and minimal creative work."
-              },
-              {
-                "title": "Development ",
-                "description": "With 3+ years creating for the web, I can join your upcoming project to lead development in a design-first, systematic way that will scale with your brand."
-              }
-            ]
-          }
-        }
-      ]
-    }
-  },
   about: {
     data: {
       "widgets": [
@@ -286,24 +176,6 @@ const data = {
       ]
     }
   },
-     works: {
-     data: {
-       seo: {
-         metaTitle: "Works - Mithun raj",
-         metaDescription: "Portfolio of web development projects by Mithun raj"
-       },
-       widgets: [
-         { 
-           widget_type: "WorkList", 
-           data: { 
-             title: "My Works",
-             subtitle: "Portfolio Projects",
-             works: [] // Empty array - will be populated by dynamic data
-           } 
-         }
-       ]
-     }
-   },
   contact: {
     data: {
       seo: {
@@ -329,7 +201,7 @@ const data = {
         }
       ]
     }
-    }
+  }
 };
 
 // Dynamic works array for admin management - starts empty
@@ -339,7 +211,120 @@ let dynamicWorks = [];
 let dynamicWorkDetails = {};
 
 // API Routes
-app.get('/api/homepage', (req, res) => res.json(data.homepage));
+app.get('/api/homepage', (req, res) => {
+  // Create homepage data dynamically to include current works
+  const homepageData = {
+    data: {
+      seo: { 
+        metaTitle: "Mithun raj", 
+        metaDescription: "Portfolio site" 
+      },
+      widgets: [
+        { 
+          widget_type: "HomeBanner", 
+          data: { 
+            title: "FRONTEND DEVELOPER",
+            subtitle: "Creative Web Developer",
+            description: "Building modern web applications with cutting-edge technologies"
+          } 
+        },
+        {
+          "widget_type": "HomeAbout",
+          "data": {
+            "title": "MITHUN RAJ",
+            "description": "I'm a lead WebApp Developer and Digital Designer building scalable, accessible, and technically tuned brands on the web.",
+            "link": {
+              "text": "ABOUT ME",
+              "url": "/about"
+            },
+            "stack_title": "SERVICE TYPE",
+            "stack": [
+              {
+                "title": "Web Application",
+                "link": {
+                  "text": "KNOW MORE",
+                  "url": "/"
+                }
+              },
+              {
+                "title": "Prograssive Web Application",
+                "link": {
+                  "text": "KNOW MORE",
+                  "url": "/"
+                }
+              },
+              {
+                "title": "Decentralized applications",
+                "link": {
+                  "text": "KNOW MORE",
+                  "url": "/"
+                }
+              }
+            ]
+          }
+        },
+        {
+          widget_type: "HomeWorks",
+          data: {
+            title: "Featured Works",
+            works: dynamicWorks.slice(0, 4) // Show only first 4 works from dynamic data
+          }
+        },
+        {
+          "widget_type": "HomePrinciples",
+          "data": {
+            "title": "PRINCIPLES",
+            "main_title": "<span>DESIGN MEETS</span><span> DEVELOPMENT</span>",
+            "principles": [
+              {
+                "title": "Systems-first",
+                "description": "Building systems for anything from design and development, to scoping and documentation is at the core of my process to driving results for every project I work on."
+              },
+              {
+                "title": "Accessibility and Usability",
+                "description": "Accessibility and usability are two important principles of front-end development that aim to make a website or web application easy to use and understand for all users, regardless of their abilities, preferences, or devices"
+              },
+              {
+                "title": "Performance and Optimization",
+                "description": "Performance and optimization are two related principles of front-end development that aim to make a website or web application fast and reliable for users."
+              },
+              {
+                "title": "Responsiveness and Cross-Browser Compatibility",
+                "description": "Responsiveness and cross-browser compatibility are two essential principles of front-end development that aim to make a website or web application adaptable and consistent across different devices and browsers"
+              },
+              {
+                "title": "Testing and Debugging",
+                "description": "Testing and debugging are essential for web development, as they prevent problems, improve user experience, increase trust and ensure the quality."
+              }
+            ]
+          }
+        },
+        {
+          "widget_type": "HomeHire",
+          "data": {
+            "title": "SERVICES",
+            "main_title": "HIRE ME",
+            "services": [
+              {
+                "title": "Consulting ",
+                "description": "Agencies and in-house teams hire me to be embedded on their team for direct support on strategy, scoping, custom code, and training."
+              },
+              {
+                "title": "Design ",
+                "description": "From strategy and brand, to web and product design, I help teams bring businesses to life with modern, memorable and minimal creative work."
+              },
+              {
+                "title": "Development ",
+                "description": "With 3+ years creating for the web, I can join your upcoming project to lead development in a design-first, systematic way that will scale with your brand."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  };
+  res.json(homepageData);
+});
 app.get('/api/about', (req, res) => res.json(data.about));
 app.get('/api/works', (req, res) => {
   // Return dynamic works data
