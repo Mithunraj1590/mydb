@@ -355,6 +355,16 @@ app.get('/api/admin/works', (req, res) => {
   res.json(dynamicWorks);
 });
 
+app.get('/api/admin/works/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const work = dynamicWorks.find(work => work.id === id);
+  if (work) {
+    res.json(work);
+  } else {
+    res.status(404).json({ error: 'Work not found' });
+  }
+});
+
 app.post('/api/admin/works', (req, res) => {
   const newWork = {
     id: dynamicWorks.length + 1,

@@ -35,10 +35,18 @@
             </div>
         </div>
 
-        <!-- Add Work Form -->
+        <!-- Add/Edit Work Form -->
         <div class="mt-8 bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-xl font-semibold mb-4">Add New Work</h2>
-            <form id="addWorkForm" class="space-y-4">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-semibold" id="formTitle">Add New Work</h2>
+                <button id="toggleFormBtn" onclick="toggleForm()" class="text-blue-600 hover:text-blue-800 text-sm">
+                    Switch to Edit Mode
+                </button>
+            </div>
+            
+            <form id="workForm" class="space-y-4">
+                <input type="hidden" id="editId" value="">
+                
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Title *</label>
@@ -151,9 +159,14 @@
                     <label for="featured" class="ml-2 block text-sm text-gray-900">Featured on Homepage</label>
                 </div>
 
-                <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">
-                    Add Work
-                </button>
+                <div class="flex gap-4">
+                    <button type="submit" id="submitBtn" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">
+                        Add Work
+                    </button>
+                    <button type="button" id="cancelBtn" onclick="cancelEdit()" class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600" style="display: none;">
+                        Cancel Edit
+                    </button>
+                </div>
             </form>
         </div>
 
@@ -174,6 +187,9 @@
     </div>
 
     <script>
+        let isEditMode = false;
+        let currentEditId = null;
+
         // Check API status on load
         window.onload = function() {
             checkAPIStatus();
@@ -241,16 +257,22 @@
                 workDiv.className = 'border border-gray-200 rounded-lg p-4';
                 workDiv.innerHTML = `
                     <div class="flex items-center justify-between">
-                        <div>
+                        <div class="flex-1">
                             <h3 class="font-semibold text-lg">${work.title}</h3>
                             <p class="text-gray-600">${work.category} • ${work.date}</p>
                             <p class="text-sm text-gray-500 mt-1">${work.description}</p>
                             <p class="text-xs text-blue-600 mt-1">Slug: ${work.slug || 'auto-generated'}</p>
                         </div>
-                        <div class="text-right">
+                        <div class="flex items-center gap-2">
                             <span class="px-2 py-1 text-xs rounded ${work.featured ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}">
                                 ${work.featured ? 'Featured' : 'Regular'}
                             </span>
+                            <button onclick="editWork(${work.id})" class="px-3 py-1 bg-blue-500 text-white text-xs rounded hover:bg-blue-600">
+                                Edit
+                            </button>
+                            <button onclick="deleteWork(${work.id})" class="px-3 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600">
+                                Delete
+                            </button>
                         </div>
                     </div>
                 `;
@@ -258,17 +280,158 @@
             });
         }
 
-        // Tech Stack Functions
-        function addTechStack() {
+        function toggleForm() {
+            isEditMode = !isEditMode;
+            const formTitle = document.getElementById('formTitle');
+            const submitBtn = document.getElementById('submitBtn');
+            const toggleBtn = document.getElementById('toggleFormBtn');
+            const cancelBtn = document.getElementById('cancelBtn');
+
+            if (isEditMode) {
+                formTitle.textContent = 'Edit Work';
+                submitBtn.textContent = 'Update Work';
+                toggleBtn.textContent = 'Switch to Add Mode';
+                cancelBtn.style.display = 'inline-block';
+            } else {
+                formTitle.textContent = 'Add New Work';
+                submitBtn.textContent = 'Add Work';
+                toggleBtn.textContent = 'Switch to Edit Mode';
+                cancelBtn.style.display = 'none';
+                clearForm();
+            }
+        }
+
+        function clearForm() {
+            document.getElementById('workForm').reset();
+            document.getElementById('editId').value = '';
+            currentEditId = null;
+            
+            // Clear dynamic sections
+            document.getElementById('techStackContainer').innerHTML = `
+                <div class="flex gap-2">
+                    <input type="text" placeholder="Technology name (e.g., React)" class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 tech-name">
+                    <input type="text" placeholder="Icon URL or path (e.g., /images/skills/React_logo.svg)" class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 tech-icon">
+                    <button type="button" onclick="removeTechStack(this)" class="px-3 py-2 bg-red-500 text-white rounded hover:bg-red-600">Remove</button>
+                </div>
+            `;
+            document.getElementById('galleryContainer').innerHTML = `
+                <div class="flex gap-2">
+                    <input type="text" placeholder="Image URL or path (e.g., /images/works/project1.png)" class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 gallery-image">
+                    <button type="button" onclick="removeGalleryImage(this)" class="px-3 py-2 bg-red-500 text-white rounded hover:bg-red-600">Remove</button>
+                </div>
+            `;
+        }
+
+        function cancelEdit() {
+            isEditMode = false;
+            toggleForm();
+        }
+
+        async function editWork(id) {
+            try {
+                const response = await fetch(`/api/admin/works/${id}`);
+                if (response.ok) {
+                    const work = await response.json();
+                    populateForm(work);
+                    
+                    if (!isEditMode) {
+                        toggleForm();
+                    }
+                } else {
+                    alert('Error loading work data');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error loading work data');
+            }
+        }
+
+        function populateForm(work) {
+            currentEditId = work.id;
+            document.getElementById('editId').value = work.id;
+            document.getElementById('title').value = work.title || '';
+            document.getElementById('slug').value = work.slug || '';
+            document.getElementById('category').value = work.category || '';
+            document.getElementById('date').value = work.date || '';
+            document.getElementById('image').value = work.image || '';
+            document.getElementById('description').value = work.description || '';
+            document.getElementById('longDescription').value = work.longDescription || '';
+            document.getElementById('challenges').value = work.challenges || '';
+            document.getElementById('solutions').value = work.solutions || '';
+            document.getElementById('results').value = work.results || '';
+            document.getElementById('liveUrl').value = work.links?.live || '';
+            document.getElementById('githubUrl').value = work.links?.github || '';
+            document.getElementById('featured').checked = work.featured || false;
+
+            // Populate tech stack
+            const techStackContainer = document.getElementById('techStackContainer');
+            techStackContainer.innerHTML = '';
+            if (work.techStack && work.techStack.length > 0) {
+                work.techStack.forEach(tech => {
+                    addTechStackItem(tech.name, tech.icon);
+                });
+            } else {
+                addTechStackItem('', '');
+            }
+
+            // Populate gallery
+            const galleryContainer = document.getElementById('galleryContainer');
+            galleryContainer.innerHTML = '';
+            if (work.gallery && work.gallery.length > 0) {
+                work.gallery.forEach(image => {
+                    addGalleryImageItem(image);
+                });
+            } else {
+                addGalleryImageItem('');
+            }
+        }
+
+        function addTechStackItem(name = '', icon = '') {
             const container = document.getElementById('techStackContainer');
             const newItem = document.createElement('div');
             newItem.className = 'flex gap-2';
             newItem.innerHTML = `
-                <input type="text" placeholder="Technology name (e.g., React)" class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 tech-name">
-                <input type="text" placeholder="Icon URL or path (e.g., /images/skills/React_logo.svg)" class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 tech-icon">
+                <input type="text" placeholder="Technology name (e.g., React)" value="${name}" class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 tech-name">
+                <input type="text" placeholder="Icon URL or path (e.g., /images/skills/React_logo.svg)" value="${icon}" class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 tech-icon">
                 <button type="button" onclick="removeTechStack(this)" class="px-3 py-2 bg-red-500 text-white rounded hover:bg-red-600">Remove</button>
             `;
             container.appendChild(newItem);
+        }
+
+        function addGalleryImageItem(image = '') {
+            const container = document.getElementById('galleryContainer');
+            const newItem = document.createElement('div');
+            newItem.className = 'flex gap-2';
+            newItem.innerHTML = `
+                <input type="text" placeholder="Image URL or path (e.g., /images/works/project1.png)" value="${image}" class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 gallery-image">
+                <button type="button" onclick="removeGalleryImage(this)" class="px-3 py-2 bg-red-500 text-white rounded hover:bg-red-600">Remove</button>
+            `;
+            container.appendChild(newItem);
+        }
+
+        async function deleteWork(id) {
+            if (confirm('Are you sure you want to delete this work?')) {
+                try {
+                    const response = await fetch(`/api/admin/works/${id}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (response.ok) {
+                        alert('Work deleted successfully!');
+                        loadWorks();
+                    } else {
+                        alert('Error deleting work');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error deleting work');
+                }
+            }
+        }
+
+        // Tech Stack Functions
+        function addTechStack() {
+            addTechStackItem();
         }
 
         function removeTechStack(button) {
@@ -277,14 +440,7 @@
 
         // Gallery Functions
         function addGalleryImage() {
-            const container = document.getElementById('galleryContainer');
-            const newItem = document.createElement('div');
-            newItem.className = 'flex gap-2';
-            newItem.innerHTML = `
-                <input type="text" placeholder="Image URL or path (e.g., /images/works/project1.png)" class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 gallery-image">
-                <button type="button" onclick="removeGalleryImage(this)" class="px-3 py-2 bg-red-500 text-white rounded hover:bg-red-600">Remove</button>
-            `;
-            container.appendChild(newItem);
+            addGalleryImageItem();
         }
 
         function removeGalleryImage(button) {
@@ -292,7 +448,7 @@
         }
 
         // Handle form submission
-        document.getElementById('addWorkForm').addEventListener('submit', async (e) => {
+        document.getElementById('workForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             
             // Collect tech stack data
@@ -339,8 +495,11 @@
             };
 
             try {
-                const response = await fetch('/api/admin/works', {
-                    method: 'POST',
+                const url = isEditMode ? `/api/admin/works/${currentEditId}` : '/api/admin/works';
+                const method = isEditMode ? 'PUT' : 'POST';
+
+                const response = await fetch(url, {
+                    method: method,
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -348,32 +507,20 @@
                 });
 
                 if (response.ok) {
-                    const newWork = await response.json();
-                    alert(`Work "${newWork.title}" added successfully!`);
-                    document.getElementById('addWorkForm').reset();
+                    const result = await response.json();
+                    alert(isEditMode ? `Work "${result.title}" updated successfully!` : `Work "${result.title}" added successfully!`);
                     
-                    // Clear dynamic sections
-                    document.getElementById('techStackContainer').innerHTML = `
-                        <div class="flex gap-2">
-                            <input type="text" placeholder="Technology name (e.g., React)" class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 tech-name">
-                            <input type="text" placeholder="Icon URL or path (e.g., /images/skills/React_logo.svg)" class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 tech-icon">
-                            <button type="button" onclick="removeTechStack(this)" class="px-3 py-2 bg-red-500 text-white rounded hover:bg-red-600">Remove</button>
-                        </div>
-                    `;
-                    document.getElementById('galleryContainer').innerHTML = `
-                        <div class="flex gap-2">
-                            <input type="text" placeholder="Image URL or path (e.g., /images/works/project1.png)" class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 gallery-image">
-                            <button type="button" onclick="removeGalleryImage(this)" class="px-3 py-2 bg-red-500 text-white rounded hover:bg-red-600">Remove</button>
-                        </div>
-                    `;
+                    if (!isEditMode) {
+                        clearForm();
+                    }
                     
                     loadWorks();
                 } else {
-                    alert('Error adding work');
+                    alert(isEditMode ? 'Error updating work' : 'Error adding work');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('Error adding work');
+                alert(isEditMode ? 'Error updating work' : 'Error adding work');
             }
         });
     </script>
