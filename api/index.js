@@ -1,30 +1,65 @@
-const jsonServer = require('json-server');
+const express = require('express');
+const cors = require('cors');
 const path = require('path');
 
-// Create server
-const server = jsonServer.create();
-const router = jsonServer.router(path.join(__dirname, '../db.json'));
-const middlewares = jsonServer.defaults();
+const app = express();
 
-// Set default middlewares
-server.use(middlewares);
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(express.static(path.join(__dirname, '../public')));
 
-// Use default router
-server.use('/', router);
+// Static data
+const data = {
+  homepage: {
+    data: {
+      seo: { metaTitle: "Mithun raj", metaDescription: "Portfolio site" },
+      widgets: [
+        { widget_type: "HomeBanner", data: { title: "FRONTEND DEVELOPER" } },
+        { widget_type: "HomeAbout", data: { title: "MITHUN RAJ", description: "WebApp Developer" } }
+      ]
+    }
+  },
+  about: {
+    data: {
+      widgets: [
+        { widget_type: "AboutBanner", data: { title: "CREATIVE MEETS TECHNICAL" } }
+      ]
+    }
+  },
+  works: {
+    data: {
+      widgets: [
+        { widget_type: "WorkList", data: { title: "Works", works: [] } }
+      ]
+    }
+  },
+  contact: {
+    data: {
+      widgets: [
+        { widget_type: "ContactUs", data: { title: "Contact", mobile: "+91 7907348596" } }
+      ]
+    }
+  }
+};
+
+// API Routes
+app.get('/api/homepage', (req, res) => res.json(data.homepage));
+app.get('/api/about', (req, res) => res.json(data.about));
+app.get('/api/works', (req, res) => res.json(data.works));
+app.get('/api/contact', (req, res) => res.json(data.contact));
+app.get('/api/works/:slug', (req, res) => res.status(404).json({ error: 'Work not found' }));
+app.get('/api/admin/works', (req, res) => res.json([]));
+
+// Admin interface
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/admin.html'));
+});
+
+// Default route
+app.get('/', (req, res) => {
+  res.json({ message: 'Portfolio API is running' });
+});
 
 // Export for Vercel serverless function
-module.exports = (req, res) => {
-  // Add CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  
-  // Handle preflight requests
-  if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
-  }
-  
-  // Pass to json-server
-  server(req, res);
-};
+module.exports = app;
