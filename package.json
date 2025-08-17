@@ -11,6 +11,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
+    "build": "echo 'Build completed'",
     "seed": "node seed.js"
   }
 }
