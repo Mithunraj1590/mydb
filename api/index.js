@@ -417,7 +417,7 @@ app.post('/api/admin/works', (req, res) => {
               },
               {
                 title: "Results",
-                description: "Project results and outcomes will be added here."
+                description: req.body.results || "Project results and outcomes will be added here."
               }
             ]
           }
