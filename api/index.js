@@ -411,27 +411,27 @@ const data = {
             ]
           }
         },
-        {
-          "widget_type": "HomeHire",
-          "data": {
-            "title": "About This Project",
-            "description": "Worktowander Dashboard is a full-featured administrative interface designed to streamline the management of work and travel bookings. The platform provides an intuitive user experience with advanced filtering, search capabilities, and comprehensive reporting tools. Built with modern web technologies, it ensures fast performance and responsive design across all devices.",
-            "details": [
-              {
-                "title": "Challenges",
-                "description": "The dashboard was built to address the challenges faced by the company in managing their work and travel bookings. The platform was designed to provide a centralized location for all booking information, allowing for easy tracking and management of bookings across different departments and locations."
-              },
-              {
-                "title": "Solutions",
-                "description": "The dashboard was built to address the challenges faced by the company in managing their work and travel bookings. The platform was designed to provide a centralized location for all booking information, allowing for easy tracking and management of bookings across different departments and locations."
-              },
-              {
-                "title": "Results",
-                "description": "The dashboard was built to address the challenges faced by the company in managing their work and travel bookings. The platform was designed to provide a centralized location for all booking information, allowing for easy tracking and management of bookings across different departments and locations."
-              }
-            ]
-          }
-        },
+                 {
+           "widget_type": "WorkDetail",
+           "data": {
+             "title": "About This Project",
+             "description": "Worktowander Dashboard is a full-featured administrative interface designed to streamline the management of work and travel bookings. The platform provides an intuitive user experience with advanced filtering, search capabilities, and comprehensive reporting tools. Built with modern web technologies, it ensures fast performance and responsive design across all devices.",
+             "details": [
+               {
+                 "title": "Challenges",
+                 "description": "The dashboard was built to address the challenges faced by the company in managing their work and travel bookings. The platform was designed to provide a centralized location for all booking information, allowing for easy tracking and management of bookings across different departments and locations."
+               },
+               {
+                 "title": "Solutions",
+                 "description": "The dashboard was built to address the challenges faced by the company in managing their work and travel bookings. The platform was designed to provide a centralized location for all booking information, allowing for easy tracking and management of bookings across different departments and locations."
+               },
+               {
+                 "title": "Results",
+                 "description": "The dashboard was built to address the challenges faced by the company in managing their work and travel bookings. The platform was designed to provide a centralized location for all booking information, allowing for easy tracking and management of bookings across different departments and locations."
+               }
+             ]
+           }
+         },
         {
           "widget_type": "ImageGrid",
           "data": {
@@ -491,27 +491,27 @@ const data = {
             ]
           }
         },
-        {
-          "widget_type": "HomeHire",
-          "data": {
-            "title": "About This Project",
-            "description": "A comprehensive e-commerce solution built with modern web technologies. Features include secure payment processing, inventory management, order tracking, customer analytics, and a responsive design that works seamlessly across all devices.",
-            "details": [
-              {
-                "title": "Challenges",
-                "description": "Integrating multiple payment gateways and ensuring secure transaction processing while maintaining optimal performance."
-              },
-              {
-                "title": "Solutions",
-                "description": "Implemented Stripe for payment processing, used JWT for authentication, and optimized database queries for better performance."
-              },
-              {
-                "title": "Results",
-                "description": "Successfully created a scalable e-commerce platform with secure payment processing and comprehensive inventory management."
-              }
-            ]
-          }
-        },
+                 {
+           "widget_type": "WorkDetail",
+           "data": {
+             "title": "About This Project",
+             "description": "A comprehensive e-commerce solution built with modern web technologies. Features include secure payment processing, inventory management, order tracking, customer analytics, and a responsive design that works seamlessly across all devices.",
+             "details": [
+               {
+                 "title": "Challenges",
+                 "description": "Integrating multiple payment gateways and ensuring secure transaction processing while maintaining optimal performance."
+               },
+               {
+                 "title": "Solutions",
+                 "description": "Implemented Stripe for payment processing, used JWT for authentication, and optimized database queries for better performance."
+               },
+               {
+                 "title": "Results",
+                 "description": "Successfully created a scalable e-commerce platform with secure payment processing and comprehensive inventory management."
+               }
+             ]
+           }
+         },
         {
           "widget_type": "ImageGrid",
           "data": {
@@ -567,27 +567,27 @@ const data = {
             ]
           }
         },
-        {
-          "widget_type": "HomeHire",
-          "data": {
-            "title": "About This Project",
-            "description": "A modern task management application designed for teams to collaborate effectively. Features real-time updates, drag-and-drop task organization, team collaboration tools, and comprehensive progress tracking with analytics.",
-            "details": [
-              {
-                "title": "Challenges",
-                "description": "Implementing real-time collaboration features and ensuring smooth drag-and-drop functionality across different devices."
-              },
-              {
-                "title": "Solutions",
-                "description": "Used Firebase Realtime Database for live updates, implemented WebSocket connections, and created a responsive drag-and-drop interface."
-              },
-              {
-                "title": "Results",
-                "description": "Successfully created a collaborative task management platform with real-time updates and intuitive user interface."
-              }
-            ]
-          }
-        },
+                 {
+           "widget_type": "WorkDetail",
+           "data": {
+             "title": "About This Project",
+             "description": "A modern task management application designed for teams to collaborate effectively. Features real-time updates, drag-and-drop task organization, team collaboration tools, and comprehensive progress tracking with analytics.",
+             "details": [
+               {
+                 "title": "Challenges",
+                 "description": "Implementing real-time collaboration features and ensuring smooth drag-and-drop functionality across different devices."
+               },
+               {
+                 "title": "Solutions",
+                 "description": "Used Firebase Realtime Database for live updates, implemented WebSocket connections, and created a responsive drag-and-drop interface."
+               },
+               {
+                 "title": "Results",
+                 "description": "Successfully created a collaborative task management platform with real-time updates and intuitive user interface."
+               }
+             ]
+           }
+         },
         {
           "widget_type": "ImageGrid",
           "data": {
@@ -643,27 +643,27 @@ const data = {
             ]
           }
         },
-        {
-          "widget_type": "HomeHire",
-          "data": {
-            "title": "About This Project",
-            "description": "An innovative learning platform that provides interactive video courses, personalized learning paths, and comprehensive progress tracking. Built with modern technologies to deliver an engaging educational experience.",
-            "details": [
-              {
-                "title": "Challenges",
-                "description": "Handling large video files and implementing efficient progress tracking for thousands of users."
-              },
-              {
-                "title": "Solutions",
-                "description": "Used cloud storage for video files, implemented efficient caching strategies, and created a scalable progress tracking system."
-              },
-              {
-                "title": "Results",
-                "description": "Successfully created an engaging learning platform with video courses and comprehensive progress tracking."
-              }
-            ]
-          }
-        },
+                 {
+           "widget_type": "WorkDetail",
+           "data": {
+             "title": "About This Project",
+             "description": "An innovative learning platform that provides interactive video courses, personalized learning paths, and comprehensive progress tracking. Built with modern technologies to deliver an engaging educational experience.",
+             "details": [
+               {
+                 "title": "Challenges",
+                 "description": "Handling large video files and implementing efficient progress tracking for thousands of users."
+               },
+               {
+                 "title": "Solutions",
+                 "description": "Used cloud storage for video files, implemented efficient caching strategies, and created a scalable progress tracking system."
+               },
+               {
+                 "title": "Results",
+                 "description": "Successfully created an engaging learning platform with video courses and comprehensive progress tracking."
+               }
+             ]
+           }
+         },
         {
           "widget_type": "ImageGrid",
           "data": {
@@ -872,27 +872,27 @@ app.post('/api/admin/works', (req, res) => {
             ]
           }
         },
-        {
-          widget_type: "HomeHire",
-          data: {
-            title: "About This Project",
-            description: req.body.longDescription || req.body.description || "",
-            details: [
-              {
-                title: "Challenges",
-                description: req.body.challenges || "Technical challenges and solutions will be added here."
-              },
-              {
-                title: "Solutions",
-                description: req.body.solutions || "Solutions and implementation details will be added here."
-              },
-              {
-                title: "Results",
-                description: "Project results and outcomes will be added here."
-              }
-            ]
-          }
-        },
+                 {
+           widget_type: "WorkDetail",
+           data: {
+             title: "About This Project",
+             description: req.body.longDescription || req.body.description || "",
+             details: [
+               {
+                 title: "Challenges",
+                 description: req.body.challenges || "Technical challenges and solutions will be added here."
+               },
+               {
+                 title: "Solutions",
+                 description: req.body.solutions || "Solutions and implementation details will be added here."
+               },
+               {
+                 title: "Results",
+                 description: "Project results and outcomes will be added here."
+               }
+             ]
+           }
+         },
         {
           widget_type: "ImageGrid",
           data: {
