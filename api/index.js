@@ -718,7 +718,33 @@ app.get('/api/works', (req, res) => {
           widget_type: "WorkList", 
           data: { 
             title: "My Works",
-            subtitle: "Portfolio Projects",
+            "description": "A collection of some of my favorite Digital Design and Development projects from the past few years. 🤓",
+            "category": [
+              {
+                "value": "all",
+                "label": "All"
+              },
+              {
+                "value": "fashion",
+                "label": "Fashion"
+              },
+              {
+                "value": "media",
+                "label": "Media"
+              },
+              {
+                "value": "social",
+                "label": "Social"
+              },
+              {
+                "value": "travel-and-tourism",
+                "label": "Social"
+              },
+              {
+                "value": "electronics",
+                "label": "Electronics"
+              }
+            ],
             works: dynamicWorks
           } 
         }
