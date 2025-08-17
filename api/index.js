@@ -36,7 +36,7 @@ const data = {
           } 
         },
         {
-          widget_type: "FeaturedWorks",
+          widget_type: "HomeWorks",
           data: {
             title: "Featured Works",
             works: [
@@ -71,6 +71,56 @@ const data = {
                 date: "2024",
                 image: "/images/works/work4.png",
                 description: "Interactive learning platform with video courses and progress tracking."
+              }
+            ]
+          }
+        },
+        {
+          "widget_type": "HomePrinciples",
+          "data": {
+            "title": "PRINCIPLES",
+            "main_title": "<span>DESIGN MEETS</span><span> DEVELOPMENT</span>",
+            "principles": [
+              {
+                "title": "Systems-first",
+                "description": "Building systems for anything from design and development, to scoping and documentation is at the core of my process to driving results for every project I work on."
+              },
+              {
+                "title": "Accessibility and Usability",
+                "description": "Accessibility and usability are two important principles of front-end development that aim to make a website or web application easy to use and understand for all users, regardless of their abilities, preferences, or devices"
+              },
+              {
+                "title": "Performance and Optimization",
+                "description": "Performance and optimization are two related principles of front-end development that aim to make a website or web application fast and reliable for users."
+              },
+              {
+                "title": "Responsiveness and Cross-Browser Compatibility",
+                "description": "Responsiveness and cross-browser compatibility are two essential principles of front-end development that aim to make a website or web application adaptable and consistent across different devices and browsers"
+              },
+              {
+                "title": "Testing and Debugging",
+                "description": "Testing and debugging are essential for web development, as they prevent problems, improve user experience, increase trust and ensure the quality."
+              }
+            ]
+          }
+        },
+        {
+          "widget_type": "HomeHire",
+          "data": {
+            "title": "SERVICES",
+            "main_title": "HIRE ME",
+            "services": [
+              {
+                "title": "Consulting ",
+                "description": "Agencies and in-house teams hire me to be embedded on their team for direct support on strategy, scoping, custom code, and training."
+              },
+              {
+                "title": "Design ",
+                "description": "From strategy and brand, to web and product design, I help teams bring businesses to life with modern, memorable and minimal creative work."
+              },
+              {
+                "title": "Development ",
+                "description": "With 3+ years creating for the web, I can join your upcoming project to lead development in a design-first, systematic way that will scale with your brand."
               }
             ]
           }
