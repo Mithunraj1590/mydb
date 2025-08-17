@@ -5,6 +5,12 @@ const fs = require('fs');
 
 const app = express();
 
+// Dynamic works array for admin management - starts empty
+let dynamicWorks = [];
+
+// Dynamic work detail pages - starts empty
+let dynamicWorkDetails = {};
+
 // File paths for data persistence
 const WORKS_FILE = path.join(__dirname, '../data/works.json');
 const WORK_DETAILS_FILE = path.join(__dirname, '../data/work-details.json');
@@ -203,12 +209,6 @@ const data = {
     }
   }
 };
-
-// Dynamic works array for admin management - starts empty
-let dynamicWorks = [];
-
-// Dynamic work detail pages - starts empty
-let dynamicWorkDetails = {};
 
 // API Routes
 app.get('/api/homepage', (req, res) => {
