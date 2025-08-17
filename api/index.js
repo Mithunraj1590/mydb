@@ -285,19 +285,9 @@ const data = {
         }
       ]
     }
-  }
-};
-
-// API Routes
-app.get('/api/homepage', (req, res) => res.json(data.homepage));
-app.get('/api/about', (req, res) => res.json(data.about));
-app.get('/api/works', (req, res) => res.json(data.works));
-app.get('/api/contact', (req, res) => res.json(data.contact));
-
-// Work detail routes
-app.get('/api/work/worktowander-dashboard', (req, res) => {
-  res.json({
-    "work-detail": {
+  },
+  "work/worktowander-dashboard": {
+ 
       "data": {
         "seo": {
           "metaTitle": "Worktowander Dashboard - Project Details",
@@ -362,14 +352,11 @@ app.get('/api/work/worktowander-dashboard', (req, res) => {
           }
         ]
       }
-    }
-  });
-});
+    
+  },
+  "work/ecommerce-platform": {
 
-app.get('/api/work/ecommerce-platform', (req, res) => {
-  res.json({
-    "work-detail": {
-      "data": {
+      data: {
         "seo": {
           "metaTitle": "E-commerce Platform - Project Details",
           "metaDescription": "Modern e-commerce platform with advanced features and payment integration.",
@@ -433,14 +420,11 @@ app.get('/api/work/ecommerce-platform', (req, res) => {
           }
         ]
       }
-    }
-  });
-});
-
-app.get('/api/work/task-management-app', (req, res) => {
-  res.json({
-    "work-detail": {
-      "data": {
+    
+  },
+  "work/task-management-app": {
+  
+      data: {
         "seo": {
           "metaTitle": "Task Management App - Project Details",
           "metaDescription": "Collaborative task management application with real-time updates and team collaboration.",
@@ -500,14 +484,11 @@ app.get('/api/work/task-management-app', (req, res) => {
           }
         ]
       }
-    }
-  });
-});
-
-app.get('/api/work/learning-platform', (req, res) => {
-  res.json({
-    "work-detail": {
-      "data": {
+    
+  },
+  "work/learning-platform": {
+  
+      data: {
         "seo": {
           "metaTitle": "Learning Platform - Project Details",
           "metaDescription": "Interactive learning platform with video courses and progress tracking.",
@@ -567,8 +548,31 @@ app.get('/api/work/learning-platform', (req, res) => {
           }
         ]
       }
-    }
-  });
+    
+  }
+};
+
+// API Routes
+app.get('/api/homepage', (req, res) => res.json(data.homepage));
+app.get('/api/about', (req, res) => res.json(data.about));
+app.get('/api/works', (req, res) => res.json(data.works));
+app.get('/api/contact', (req, res) => res.json(data.contact));
+
+// Work detail routes
+app.get('/api/work/worktowander-dashboard', (req, res) => {
+  res.json(data['work/worktowander-dashboard']);
+});
+
+app.get('/api/work/ecommerce-platform', (req, res) => {
+  res.json(data['work/ecommerce-platform']);
+});
+
+app.get('/api/work/task-management-app', (req, res) => {
+  res.json(data['work/task-management-app']);
+});
+
+app.get('/api/work/learning-platform', (req, res) => {
+  res.json(data['work/learning-platform']);
 });
 
 app.get('/api/works/:slug', (req, res) => res.status(404).json({ error: 'Work not found' }));
