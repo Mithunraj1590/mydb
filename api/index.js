@@ -293,6 +293,264 @@ app.get('/api/homepage', (req, res) => res.json(data.homepage));
 app.get('/api/about', (req, res) => res.json(data.about));
 app.get('/api/works', (req, res) => res.json(data.works));
 app.get('/api/contact', (req, res) => res.json(data.contact));
+
+// Work detail routes
+app.get('/api/work/worktowander-dashboard', (req, res) => {
+  res.json({
+    "work-detail": {
+      "data": {
+        "seo": {
+          "metaTitle": "Worktowander Dashboard - Project Details",
+          "metaDescription": "A comprehensive admin dashboard built with Next.js for managing work and travel bookings.",
+          "metaImage": {
+            "url": "/images/works/work1.png"
+          }
+        },
+        "widgets": [
+          {
+            "widget_type": "WorkDetail",
+            "data": {
+              "title": "Worktowander Dashboard",
+              "date": "2024",
+              "category": "Web Application",
+              "description": "A comprehensive admin dashboard for managing work and travel bookings. Features include user management, booking system, analytics dashboard, and real-time notifications.",
+              "longDescription": "Worktowander Dashboard is a full-featured administrative interface designed to streamline the management of work and travel bookings. The platform provides an intuitive user experience with advanced filtering, search capabilities, and comprehensive reporting tools. Built with modern web technologies, it ensures fast performance and responsive design across all devices.",
+              "image": "/images/works/work1.png",
+              "gallery": [
+                "/images/works/work1.png",
+                "/images/works/work1-detail1.png",
+                "/images/works/work1-detail2.png"
+              ],
+              "techStack": [
+                {
+                  "name": "Next.js",
+                  "icon": "/images/skills/Nextjs_logo.svg"
+                },
+                {
+                  "name": "React",
+                  "icon": "/images/skills/React_logo.svg"
+                },
+                {
+                  "name": "TypeScript",
+                  "icon": "/images/skills/Typescript_logo.svg"
+                },
+                {
+                  "name": "Tailwind CSS",
+                  "icon": "/images/skills/Tailwind_logo.svg"
+                }
+              ],
+              "features": [
+                "User Authentication & Authorization",
+                "Dashboard Analytics",
+                "Booking Management System",
+                "Real-time Notifications",
+                "Responsive Design",
+                "Admin Panel"
+              ],
+              "links": {
+                "live": "https://worktowander.vercel.app/admin/dashboard",
+                "github": "https://github.com/yourusername/worktowander-dashboard"
+              },
+              "challenges": "Implementing real-time notifications and ensuring optimal performance with large datasets were the main challenges. Solved using WebSocket connections and efficient data caching strategies.",
+              "solutions": "Utilized Next.js API routes for backend functionality, implemented Redis for caching, and used Socket.io for real-time features."
+            }
+          }
+        ]
+      }
+    }
+  });
+});
+
+app.get('/api/work/ecommerce-platform', (req, res) => {
+  res.json({
+    "work-detail": {
+      "data": {
+        "seo": {
+          "metaTitle": "E-commerce Platform - Project Details",
+          "metaDescription": "Modern e-commerce platform with advanced features and payment integration.",
+          "metaImage": {
+            "url": "/images/works/work2.png"
+          }
+        },
+        "widgets": [
+          {
+            "widget_type": "WorkDetail",
+            "data": {
+              "title": "E-commerce Platform",
+              "date": "2024",
+              "category": "E-commerce",
+              "description": "Modern e-commerce platform with advanced features including payment integration, inventory management, and customer analytics.",
+              "longDescription": "A comprehensive e-commerce solution built with modern web technologies. Features include secure payment processing, inventory management, order tracking, customer analytics, and a responsive design that works seamlessly across all devices.",
+              "image": "/images/works/work2.png",
+              "gallery": [
+                "/images/works/work2.png",
+                "/images/works/work2-detail1.png",
+                "/images/works/work2-detail2.png"
+              ],
+              "techStack": [
+                {
+                  "name": "React",
+                  "icon": "/images/skills/React_logo.svg"
+                },
+                {
+                  "name": "Node.js",
+                  "icon": "/images/skills/Nodejs_logo.svg"
+                },
+                {
+                  "name": "MongoDB",
+                  "icon": "/images/skills/MongoDB_logo.svg"
+                },
+                {
+                  "name": "Stripe",
+                  "icon": "/images/skills/Stripe_logo.svg"
+                }
+              ],
+              "features": [
+                "Secure Payment Processing",
+                "Inventory Management",
+                "Order Tracking",
+                "Customer Analytics",
+                "Responsive Design",
+                "Admin Dashboard"
+              ],
+              "links": {
+                "live": "https://ecommerce-platform.vercel.app",
+                "github": "https://github.com/yourusername/ecommerce-platform"
+              },
+              "challenges": "Integrating multiple payment gateways and ensuring secure transaction processing while maintaining optimal performance.",
+              "solutions": "Implemented Stripe for payment processing, used JWT for authentication, and optimized database queries for better performance."
+            }
+          }
+        ]
+      }
+    }
+  });
+});
+
+app.get('/api/work/task-management-app', (req, res) => {
+  res.json({
+    "work-detail": {
+      "data": {
+        "seo": {
+          "metaTitle": "Task Management App - Project Details",
+          "metaDescription": "Collaborative task management application with real-time updates and team collaboration.",
+          "metaImage": {
+            "url": "/images/works/work3.png"
+          }
+        },
+        "widgets": [
+          {
+            "widget_type": "WorkDetail",
+            "data": {
+              "title": "Task Management App",
+              "date": "2024",
+              "category": "Management System",
+              "description": "Collaborative task management application with real-time updates, team collaboration, and progress tracking.",
+              "longDescription": "A modern task management application designed for teams to collaborate effectively. Features real-time updates, drag-and-drop task organization, team collaboration tools, and comprehensive progress tracking with analytics.",
+              "image": "/images/works/work3.png",
+              "gallery": [
+                "/images/works/work3.png",
+                "/images/works/work3-detail1.png",
+                "/images/works/work3-detail2.png"
+              ],
+              "techStack": [
+                {
+                  "name": "Vue.js",
+                  "icon": "/images/skills/Vuejs_logo.svg"
+                },
+                {
+                  "name": "Firebase",
+                  "icon": "/images/skills/Firebase_logo.svg"
+                },
+                {
+                  "name": "Vuetify",
+                  "icon": "/images/skills/Vuetify_logo.svg"
+                }
+              ],
+              "features": [
+                "Real-time Collaboration",
+                "Drag & Drop Interface",
+                "Team Management",
+                "Progress Tracking",
+                "File Sharing",
+                "Mobile Responsive"
+              ],
+              "links": {
+                "live": "https://task-management.vercel.app",
+                "github": "https://github.com/yourusername/task-management"
+              },
+              "challenges": "Implementing real-time collaboration features and ensuring smooth drag-and-drop functionality across different devices.",
+              "solutions": "Used Firebase Realtime Database for live updates, implemented WebSocket connections, and created a responsive drag-and-drop interface."
+            }
+          }
+        ]
+      }
+    }
+  });
+});
+
+app.get('/api/work/learning-platform', (req, res) => {
+  res.json({
+    "work-detail": {
+      "data": {
+        "seo": {
+          "metaTitle": "Learning Platform - Project Details",
+          "metaDescription": "Interactive learning platform with video courses and progress tracking.",
+          "metaImage": {
+            "url": "/images/works/work4.png"
+          }
+        },
+        "widgets": [
+          {
+            "widget_type": "WorkDetail",
+            "data": {
+              "title": "Learning Platform",
+              "date": "2024",
+              "category": "Education",
+              "description": "Interactive learning platform with video courses, progress tracking, and personalized learning paths.",
+              "longDescription": "An innovative learning platform that provides interactive video courses, personalized learning paths, and comprehensive progress tracking. Built with modern technologies to deliver an engaging educational experience.",
+              "image": "/images/works/work4.png",
+              "gallery": [
+                "/images/works/work4.png",
+                "/images/works/work4-detail1.png",
+                "/images/works/work4-detail2.png"
+              ],
+              "techStack": [
+                {
+                  "name": "Angular",
+                  "icon": "/images/skills/Angular_logo.svg"
+                },
+                {
+                  "name": "TypeScript",
+                  "icon": "/images/skills/Typescript_logo.svg"
+                },
+                {
+                  "name": "Material UI",
+                  "icon": "/images/skills/MaterialUI_logo.svg"
+                }
+              ],
+              "features": [
+                "Video Course Management",
+                "Progress Tracking",
+                "Personalized Learning",
+                "Interactive Quizzes",
+                "Certificate Generation",
+                "Mobile Learning"
+              ],
+              "links": {
+                "live": "https://learning-platform.vercel.app",
+                "github": "https://github.com/yourusername/learning-platform"
+              },
+              "challenges": "Handling large video files and implementing efficient progress tracking for thousands of users.",
+              "solutions": "Used cloud storage for video files, implemented efficient caching strategies, and created a scalable progress tracking system."
+            }
+          }
+        ]
+      }
+    }
+  });
+});
+
 app.get('/api/works/:slug', (req, res) => res.status(404).json({ error: 'Work not found' }));
 app.get('/api/admin/works', (req, res) => res.json([]));
 
