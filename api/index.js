@@ -26,14 +26,40 @@ const data = {
             description: "Building modern web applications with cutting-edge technologies"
           } 
         },
-        { 
-          widget_type: "HomeAbout", 
-          data: { 
-            title: "MITHUN RAJ", 
-            description: "WebApp Developer",
-            bio: "Passionate frontend developer with expertise in React, Next.js, and modern web technologies. Creating beautiful and functional user experiences.",
-            skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js"]
-          } 
+        {
+          "widget_type": "HomeAbout",
+          "data": {
+            "title": "MITHUN RAJ",
+            "description": "I'm a lead WebApp Developer and Digital Designer building scalable, accessible, and technically tuned brands on the web.",
+            "link": {
+              "text": "ABOUT ME",
+              "url": "/about"
+            },
+            "stack_title": "SERVICE TYPE",
+            "stack": [
+              {
+                "title": "Web Application",
+                "link": {
+                  "text": "KNOW MORE",
+                  "url": "/"
+                }
+              },
+              {
+                "title": "Prograssive Web Application",
+                "link": {
+                  "text": "KNOW MORE",
+                  "url": "/"
+                }
+              },
+              {
+                "title": "Decentralized applications",
+                "link": {
+                  "text": "KNOW MORE",
+                  "url": "/"
+                }
+              }
+            ]
+          }
         },
         {
           widget_type: "HomeWorks",
