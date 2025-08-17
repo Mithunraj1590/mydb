@@ -1,8 +1,48 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
+
+// File paths for data persistence
+const WORKS_FILE = path.join(__dirname, '../data/works.json');
+const WORK_DETAILS_FILE = path.join(__dirname, '../data/work-details.json');
+
+// Ensure data directory exists
+const dataDir = path.dirname(WORKS_FILE);
+if (!fs.existsSync(dataDir)) {
+  fs.mkdirSync(dataDir, { recursive: true });
+}
+
+// Load saved data on startup
+function loadSavedData() {
+  try {
+    if (fs.existsSync(WORKS_FILE)) {
+      const worksData = fs.readFileSync(WORKS_FILE, 'utf8');
+      dynamicWorks = JSON.parse(worksData);
+    }
+    if (fs.existsSync(WORK_DETAILS_FILE)) {
+      const detailsData = fs.readFileSync(WORK_DETAILS_FILE, 'utf8');
+      dynamicWorkDetails = JSON.parse(detailsData);
+    }
+  } catch (error) {
+    console.log('No saved data found or error loading data:', error.message);
+  }
+}
+
+// Save data to files
+function saveData() {
+  try {
+    fs.writeFileSync(WORKS_FILE, JSON.stringify(dynamicWorks, null, 2));
+    fs.writeFileSync(WORK_DETAILS_FILE, JSON.stringify(dynamicWorkDetails, null, 2));
+  } catch (error) {
+    console.error('Error saving data:', error);
+  }
+}
+
+// Load saved data on startup
+loadSavedData();
 
 // Middleware
 app.use(cors());
@@ -366,8 +406,8 @@ const data = {
             subtitle: "Let's work together",
             description: "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.",
             mobile: "+91 7907348596",
-            email: "mithunraj@example.com",
-            location: "Chennai, India",
+            email: "mithunmacsafe@gmail.com",
+            location: "Calicut,Kerala, India",
             social: {
               github: "https://github.com/mithunraj",
               linkedin: "https://linkedin.com/in/mithunraj",
@@ -377,369 +417,14 @@ const data = {
         }
       ]
     }
-  },
-    "work/worktowander-dashboard": {
-    "data": {
-      "seo": {
-        "metaTitle": "Worktowander Dashboard",
-        "metaDescription": "Worktowander Dashboard is a full-featured administrative interface designed to streamline the management of work and travel bookings. The platform provides an intuitive user experience with advanced filtering, search capabilities, and comprehensive reporting tools. Built with modern web technologies, it ensures fast performance and responsive design across all devices."
-      },
-      "slug": "worktowander-dashboard",
-      "widgets": [
-        {
-          "widget_type": "WorkDetailBanner",
-          "data": {
-            "title": "My Works",
-            "description": "A collection of some of my favorite Digital Design and Development projects from the past few years. 🤓",
-            "category": "Web Application",
-            "date": "2024",
-            "image": "/images/works/work1.png",
-            "featured": true,
-            "url": "https://worktowander.com",
-            "github": "https://github.com/worktowander/dashboard"
-          }
-        },
-        {
-          "widget_type": "AboutSkills",
-          "data": {
-            "title": "Tech Stack",
-            "skills": [
-              {
-                "name": "React",
-                "icon": "/images/skills/react.svg"
-              }
-            ]
-          }
-        },
-                 {
-           "widget_type": "WorkDetail",
-           "data": {
-      
-             "title": "ABOUT",
-             "main_title": "Project",
-             "description": "Worktowander Dashboard is a full-featured administrative interface designed to streamline the management of work and travel bookings. The platform provides an intuitive user experience with advanced filtering, search capabilities, and comprehensive reporting tools. Built with modern web technologies, it ensures fast performance and responsive design across all devices.",
-             "details": [
-               {
-                 "title": "Challenges",
-                 "description": "The dashboard was built to address the challenges faced by the company in managing their work and travel bookings. The platform was designed to provide a centralized location for all booking information, allowing for easy tracking and management of bookings across different departments and locations."
-               },
-               {
-                 "title": "Solutions",
-                 "description": "The dashboard was built to address the challenges faced by the company in managing their work and travel bookings. The platform was designed to provide a centralized location for all booking information, allowing for easy tracking and management of bookings across different departments and locations."
-               },
-               {
-                 "title": "Results",
-                 "description": "The dashboard was built to address the challenges faced by the company in managing their work and travel bookings. The platform was designed to provide a centralized location for all booking information, allowing for easy tracking and management of bookings across different departments and locations."
-               }
-             ]
-           }
-         },
-        {
-          "widget_type": "ImageGrid",
-          "data": {
-            "title": "Project Gallery",
-            "images": [
-              "/images/works/work1.png",
-              "/images/works/work2.png",
-              "/images/works/work3.png"
-            ]
-          }
-        }
-      ]
     }
-  },
-    "work/ecommerce-platform": {
-    "data": {
-      "seo": {
-        "metaTitle": "E-commerce Platform",
-        "metaDescription": "Modern e-commerce platform with advanced features and payment integration. A comprehensive e-commerce solution built with modern web technologies."
-      },
-      "slug": "ecommerce-platform",
-      "widgets": [
-        {
-          "widget_type": "WorkDetailBanner",
-          "data": {
-            "title": "E-commerce Platform",
-            "description": "Modern e-commerce platform with advanced features including payment integration, inventory management, and customer analytics.",
-            "category": "E-commerce",
-            "date": "2024",
-            "image": "/images/works/work2.png",
-            "featured": true,
-            "url": "https://ecommerce-platform.vercel.app",
-            "github": "https://github.com/yourusername/ecommerce-platform"
-          }
-        },
-        {
-          "widget_type": "AboutSkills",
-          "data": {
-            "title": "Tech Stack",
-            "skills": [
-              {
-                "name": "React",
-                "icon": "/images/skills/React_logo.svg"
-              },
-              {
-                "name": "Node.js",
-                "icon": "/images/skills/Nodejs_logo.svg"
-              },
-              {
-                "name": "MongoDB",
-                "icon": "/images/skills/MongoDB_logo.svg"
-              },
-              {
-                "name": "Stripe",
-                "icon": "/images/skills/Stripe_logo.svg"
-              }
-            ]
-          }
-        },
-                 {
-           "widget_type": "WorkDetail",
-           "data": {
-            "title": "ABOUT",
-            "main_title": "Project",
-             "description": "A comprehensive e-commerce solution built with modern web technologies. Features include secure payment processing, inventory management, order tracking, customer analytics, and a responsive design that works seamlessly across all devices.",
-             "details": [
-               {
-                 "title": "Challenges",
-                 "description": "Integrating multiple payment gateways and ensuring secure transaction processing while maintaining optimal performance."
-               },
-               {
-                 "title": "Solutions",
-                 "description": "Implemented Stripe for payment processing, used JWT for authentication, and optimized database queries for better performance."
-               },
-               {
-                 "title": "Results",
-                 "description": "Successfully created a scalable e-commerce platform with secure payment processing and comprehensive inventory management."
-               }
-             ]
-           }
-         },
-        {
-          "widget_type": "ImageGrid",
-          "data": {
-            "title": "Project Gallery",
-            "images": [
-              "/images/works/work2.png",
-              "/images/works/work2-detail1.png",
-              "/images/works/work2-detail2.png"
-            ]
-          }
-        }
-      ]
-    }
-  },
-    "work/task-management-app": {
-    "data": {
-      "seo": {
-        "metaTitle": "Task Management App",
-        "metaDescription": "Collaborative task management application with real-time updates and team collaboration. A modern task management application designed for teams to collaborate effectively."
-      },
-      "slug": "task-management-app",
-      "widgets": [
-        {
-          "widget_type": "WorkDetailBanner",
-          "data": {
-            "title": "Task Management App",
-            "description": "Collaborative task management application with real-time updates, team collaboration, and progress tracking.",
-            "category": "Management System",
-            "date": "2024",
-            "image": "/images/works/work3.png",
-            "featured": true,
-            "url": "https://task-management.vercel.app",
-            "github": "https://github.com/yourusername/task-management"
-          }
-        },
-        {
-          "widget_type": "AboutSkills",
-          "data": {
-            "title": "Tech Stack",
-            "skills": [
-              {
-                "name": "Vue.js",
-                "icon": "/images/skills/Vuejs_logo.svg"
-              },
-              {
-                "name": "Firebase",
-                "icon": "/images/skills/Firebase_logo.svg"
-              },
-              {
-                "name": "Vuetify",
-                "icon": "/images/skills/Vuetify_logo.svg"
-              }
-            ]
-          }
-        },
-                 {
-           "widget_type": "WorkDetail",
-           "data": {
-            "title": "ABOUT",
-            "main_title": "Project",
-             "details": [
-               {
-                 "title": "Challenges",
-                 "description": "Implementing real-time collaboration features and ensuring smooth drag-and-drop functionality across different devices."
-               },
-               {
-                 "title": "Solutions",
-                 "description": "Used Firebase Realtime Database for live updates, implemented WebSocket connections, and created a responsive drag-and-drop interface."
-               },
-               {
-                 "title": "Results",
-                 "description": "Successfully created a collaborative task management platform with real-time updates and intuitive user interface."
-               }
-             ]
-           }
-         },
-        {
-          "widget_type": "ImageGrid",
-          "data": {
-            "title": "Project Gallery",
-            "images": [
-              "/images/works/work3.png",
-              "/images/works/work3-detail1.png",
-              "/images/works/work3-detail2.png"
-            ]
-          }
-        }
-      ]
-    }
-  },
-    "work/learning-platform": {
-    "data": {
-      "seo": {
-        "metaTitle": "Learning Platform",
-        "metaDescription": "Interactive learning platform with video courses and progress tracking. An innovative learning platform that provides interactive video courses and personalized learning paths."
-      },
-      "slug": "learning-platform",
-      "widgets": [
-        {
-          "widget_type": "WorkDetailBanner",
-          "data": {
-            "title": "Learning Platform",
-            "description": "Interactive learning platform with video courses, progress tracking, and personalized learning paths.",
-            "category": "Education",
-            "date": "2024",
-            "image": "/images/works/work4.png",
-            "featured": true,
-            "url": "https://learning-platform.vercel.app",
-            "github": "https://github.com/yourusername/learning-platform"
-          }
-        },
-        {
-          "widget_type": "AboutSkills",
-          "data": {
-            "title": "Tech Stack",
-            "skills": [
-              {
-                "name": "Angular",
-                "icon": "/images/skills/Angular_logo.svg"
-              },
-              {
-                "name": "TypeScript",
-                "icon": "/images/skills/Typescript_logo.svg"
-              },
-              {
-                "name": "Material UI",
-                "icon": "/images/skills/MaterialUI_logo.svg"
-              }
-            ]
-          }
-        },
-                 {
-           "widget_type": "WorkDetail",
-           "data": {
-            "title": "ABOUT",
-            "main_title": "Project",
-             "details": [
-               {
-                 "title": "Challenges",
-                 "description": "Handling large video files and implementing efficient progress tracking for thousands of users."
-               },
-               {
-                 "title": "Solutions",
-                 "description": "Used cloud storage for video files, implemented efficient caching strategies, and created a scalable progress tracking system."
-               },
-               {
-                 "title": "Results",
-                 "description": "Successfully created an engaging learning platform with video courses and comprehensive progress tracking."
-               }
-             ]
-           }
-         },
-        {
-          "widget_type": "ImageGrid",
-          "data": {
-            "title": "Project Gallery",
-            "images": [
-              "/images/works/work4.png",
-              "/images/works/work4-detail1.png",
-              "/images/works/work4-detail2.png"
-            ]
-          }
-        }
-      ]
-    }
-  }
 };
 
-// Dynamic works array for admin management
-let dynamicWorks = [
-  {
-    id: 1,
-    title: "Worktowander Dashboard",
-    category: "Web Application",
-    date: "2024",
-    image: "/images/works/work1.png",
-    description: "A comprehensive admin dashboard for managing work and travel bookings. Features include user management, booking system, analytics dashboard, and real-time notifications.",
-    featured: true
-  },
-  {
-    id: 2,
-    title: "E-commerce Platform",
-    category: "E-commerce",
-    date: "2024",
-    image: "/images/works/work2.png",
-    description: "Modern e-commerce platform with advanced features including payment integration, inventory management, and customer analytics.",
-    featured: true
-  },
-  {
-    id: 3,
-    title: "Task Management App",
-    category: "Management System",
-    date: "2024",
-    image: "/images/works/work3.png",
-    description: "Collaborative task management application with real-time updates, team collaboration, and progress tracking.",
-    featured: true
-  },
-  {
-    id: 4,
-    title: "Learning Platform",
-    category: "Education",
-    date: "2024",
-    image: "/images/works/work4.png",
-    description: "Interactive learning platform with video courses, progress tracking, and personalized learning paths.",
-    featured: true
-  },
-  {
-    id: 5,
-    title: "Weather App",
-    category: "Web Application",
-    date: "2024",
-    image: "/images/works/work5.png",
-    description: "Real-time weather application with location-based forecasts and interactive maps.",
-    featured: false
-  },
-  {
-    id: 6,
-    title: "Blog Platform",
-    category: "Content Management",
-    date: "2024",
-    image: "/images/works/work6.png",
-    description: "Modern blog platform with markdown support, SEO optimization, and social sharing features.",
-    featured: false
-  }
-];
+// Dynamic works array for admin management - starts empty
+let dynamicWorks = [];
+
+// Dynamic work detail pages - starts empty
+let dynamicWorkDetails = {};
 
 // API Routes
 app.get('/api/homepage', (req, res) => res.json(data.homepage));
@@ -794,32 +479,12 @@ app.get('/api/works', (req, res) => {
 });
 app.get('/api/contact', (req, res) => res.json(data.contact));
 
-// Work detail routes
-app.get('/api/work/worktowander-dashboard', (req, res) => {
-  res.json(data['work/worktowander-dashboard']);
-});
-
-app.get('/api/work/ecommerce-platform', (req, res) => {
-  res.json(data['work/ecommerce-platform']);
-});
-
-app.get('/api/work/task-management-app', (req, res) => {
-  res.json(data['work/task-management-app']);
-});
-
-app.get('/api/work/learning-platform', (req, res) => {
-  res.json(data['work/learning-platform']);
-});
-
-app.get('/api/works/:slug', (req, res) => res.status(404).json({ error: 'Work not found' }));
-
 // Dynamic work detail route
 app.get('/api/work/:slug', (req, res) => {
   const slug = req.params.slug;
-  const workDetailKey = `work/${slug}`;
   
-  if (data[workDetailKey]) {
-    res.json(data[workDetailKey]);
+  if (dynamicWorkDetails[slug]) {
+    res.json(dynamicWorkDetails[slug]);
   } else {
     res.status(404).json({ error: 'Work detail not found' });
   }
@@ -838,11 +503,11 @@ app.post('/api/admin/works', (req, res) => {
   };
   dynamicWorks.push(newWork);
   
-  // Create work detail page dynamically using provided slug
+    // Create work detail page dynamically using provided slug
   const slug = req.body.slug || req.body.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-  const workDetailKey = `work/${slug}`;
   
-    data[workDetailKey] = {
+  // Store work detail in dynamic object
+  dynamicWorkDetails[slug] = {
     data: {
       seo: {
         metaTitle: req.body.title,
@@ -875,28 +540,28 @@ app.post('/api/admin/works', (req, res) => {
             ]
           }
         },
-                 {
-           widget_type: "WorkDetail",
-           data: {
+        {
+          widget_type: "WorkDetail",
+          data: {
             "title": "ABOUT",
             "main_title": "Project",
-             description: req.body.longDescription || req.body.description || "",
-             details: [
-               {
-                 title: "Challenges",
-                 description: req.body.challenges || "Technical challenges and solutions will be added here."
-               },
-               {
-                 title: "Solutions",
-                 description: req.body.solutions || "Solutions and implementation details will be added here."
-               },
-               {
-                 title: "Results",
-                 description: "Project results and outcomes will be added here."
-               }
-             ]
-           }
-         },
+            description: req.body.longDescription || req.body.description || "",
+            details: [
+              {
+                title: "Challenges",
+                description: req.body.challenges || "Technical challenges and solutions will be added here."
+              },
+              {
+                title: "Solutions",
+                description: req.body.solutions || "Solutions and implementation details will be added here."
+              },
+              {
+                title: "Results",
+                description: "Project results and outcomes will be added here."
+              }
+            ]
+          }
+        },
         {
           widget_type: "ImageGrid",
           data: {
@@ -908,6 +573,9 @@ app.post('/api/admin/works', (req, res) => {
     }
   };
   
+  // Save data to files
+  saveData();
+  
   res.json(newWork);
 });
 
@@ -916,6 +584,10 @@ app.put('/api/admin/works/:id', (req, res) => {
   const index = dynamicWorks.findIndex(work => work.id === id);
   if (index !== -1) {
     dynamicWorks[index] = { ...dynamicWorks[index], ...req.body };
+    
+    // Save data to files
+    saveData();
+    
     res.json(dynamicWorks[index]);
   } else {
     res.status(404).json({ error: 'Work not found' });
@@ -927,6 +599,16 @@ app.delete('/api/admin/works/:id', (req, res) => {
   const index = dynamicWorks.findIndex(work => work.id === id);
   if (index !== -1) {
     const deletedWork = dynamicWorks.splice(index, 1)[0];
+    
+    // Also delete the corresponding work detail page
+    const slug = deletedWork.slug || deletedWork.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    if (dynamicWorkDetails[slug]) {
+      delete dynamicWorkDetails[slug];
+    }
+    
+    // Save data to files
+    saveData();
+    
     res.json(deletedWork);
   } else {
     res.status(404).json({ error: 'Work not found' });
