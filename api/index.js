@@ -156,34 +156,126 @@ const data = {
   },
   about: {
     data: {
-      seo: {
-        metaTitle: "About - Mithun raj",
-        metaDescription: "Learn more about Mithun raj, a passionate frontend developer"
-      },
-      widgets: [
-        { 
-          widget_type: "AboutBanner", 
-          data: { 
-            title: "CREATIVE MEETS TECHNICAL",
-            subtitle: "About Me",
-            description: "I'm a passionate frontend developer who loves creating beautiful and functional web applications."
-          } 
+      "widgets": [
+        {
+          "widget_type": "AboutBanner",
+          "data": {
+            "title": "CREATIVE MEETS TECHNICAL",
+            "image":"/images/about-me.png",
+            "description": "I'm a midwest family man with a love for design and front-end development. I have a deep desire to consistently learn from others and fuel my skills to design timeless brands, then develop them into reality with code."
+          }
         },
         {
-          widget_type: "AboutContent",
-          data: {
-            bio: "With over 3 years of experience in web development, I specialize in creating modern, responsive web applications using React, Next.js, and other cutting-edge technologies. I believe in writing clean, maintainable code and creating exceptional user experiences.",
-            skills: [
-              { name: "React", level: 90 },
-              { name: "Next.js", level: 85 },
-              { name: "TypeScript", level: 80 },
-              { name: "Tailwind CSS", level: 95 },
-              { name: "Node.js", level: 75 }
-            ],
-            experience: "3+ years",
-            projects: "20+ completed"
+          "widget_type": "AboutJourney",
+          "data":{
+            "title":"CAREER",
+            "career":[
+              {
+                "start_date":"2024",
+                "end_date":"2025",
+                "experince":"7 month",
+                "designation":"Frontend Developer",
+                "company_name":"Nuox technologies",
+                "url":""
+              },
+              {
+                "start_date":"2022",
+                "end_date":"2024",
+                "experince":"2.5 year",
+                "designation":"UI Developer",
+                "company_name":"Webandcrafts",
+                "url":""
+              },
+              {
+                "start_date":"2021",
+                "end_date":"2022",
+                "experince":"1 year",
+                "designation":"Python Fullstack Developer",
+                "company_name":"Right Soft Options",
+                "url":""
+              }
+            ]
+          }
+        },
+        {
+          "widget_type": "AboutSkills",
+          "data":{
+            "title":"TECH STACK",
+            "skills":[
+                {
+                  "name":"HTML5",
+                  "image":"/images/skills/Html5_logo.svg"
+                },
+                {
+                  "name":"CSS",
+                   "image":"/images/skills/cSS_logo.svg"
+                },
+                {
+                  "name":"JAVASCRIPT",
+                   "image":"/images/skills/Javascript_logo.svg"
+                },
+               
+                {
+                  "name":"TYPESCRIPT",
+                   "image":"/images/skills/Typescript_logo.svg"
+                },
+                {
+                  "name":"REACT",
+                   "image":"/images/skills/React_logo.svg"
+                },
+                {
+                  "name":"NEXTJS",
+                   "image":"/images/skills/Nextjs_logo.svg"
+                },
+                {
+                  "name":"VUEJS",
+                   "image":"/images/skills/Vuejs_logo.svg"
+                },
+                {
+                  "name":"GSAP",
+                   "image":"/images/skills/Gsap_logo.svg"
+                },
+                {
+                  "name":"BOOTSTRAP",
+                   "image":"/images/skills/Bootstrap_logo.svg"
+                },
+                {
+                  "name":"TAILWIND",
+                   "image":"/images/skills/Tailwind_logo.svg"
+                },
+                {
+                  "name":"SASS",
+                   "image":"/images/skills/Sass_logo.svg"
+                },
+                {
+                  "name":"WORDPRESS",
+                   "image":"/images/skills/Wordpress_logo.svg"
+                }
+            ]
+          }
+        },
+        {
+          "widget_type": "HomeHire",
+          "data": {
+            "title": "SERVICES",
+            "main_title": "HIRE ME",
+            "services": [
+              {
+                "title": "Consulting ",
+                "description": "Agencies and in-house teams hire me to be embedded on their team for direct support on strategy, scoping, custom code, and training."
+              },
+              {
+                "title": "Design ",
+                "description": "From strategy and brand, to web and product design, I help teams bring businesses to life with modern, memorable and minimal creative work."
+              },
+              {
+                "title": "Development ",
+                "description": "With 3+ years creating for the web, I can join your upcoming project to lead development in a design-first, systematic way that will scale with your brand."
+              }
+            ]
           }
         }
+       
       ]
     }
   },
@@ -552,10 +644,89 @@ const data = {
   }
 };
 
+// Dynamic works array for admin management
+let dynamicWorks = [
+  {
+    id: 1,
+    title: "Worktowander Dashboard",
+    category: "Web Application",
+    date: "2024",
+    image: "/images/works/work1.png",
+    description: "A comprehensive admin dashboard for managing work and travel bookings. Features include user management, booking system, analytics dashboard, and real-time notifications.",
+    featured: true
+  },
+  {
+    id: 2,
+    title: "E-commerce Platform",
+    category: "E-commerce",
+    date: "2024",
+    image: "/images/works/work2.png",
+    description: "Modern e-commerce platform with advanced features including payment integration, inventory management, and customer analytics.",
+    featured: true
+  },
+  {
+    id: 3,
+    title: "Task Management App",
+    category: "Management System",
+    date: "2024",
+    image: "/images/works/work3.png",
+    description: "Collaborative task management application with real-time updates, team collaboration, and progress tracking.",
+    featured: true
+  },
+  {
+    id: 4,
+    title: "Learning Platform",
+    category: "Education",
+    date: "2024",
+    image: "/images/works/work4.png",
+    description: "Interactive learning platform with video courses, progress tracking, and personalized learning paths.",
+    featured: true
+  },
+  {
+    id: 5,
+    title: "Weather App",
+    category: "Web Application",
+    date: "2024",
+    image: "/images/works/work5.png",
+    description: "Real-time weather application with location-based forecasts and interactive maps.",
+    featured: false
+  },
+  {
+    id: 6,
+    title: "Blog Platform",
+    category: "Content Management",
+    date: "2024",
+    image: "/images/works/work6.png",
+    description: "Modern blog platform with markdown support, SEO optimization, and social sharing features.",
+    featured: false
+  }
+];
+
 // API Routes
 app.get('/api/homepage', (req, res) => res.json(data.homepage));
 app.get('/api/about', (req, res) => res.json(data.about));
-app.get('/api/works', (req, res) => res.json(data.works));
+app.get('/api/works', (req, res) => {
+  // Return dynamic works data
+  const worksData = {
+    data: {
+      seo: {
+        metaTitle: "Works - Mithun raj",
+        metaDescription: "Portfolio of web development projects by Mithun raj"
+      },
+      widgets: [
+        { 
+          widget_type: "WorkList", 
+          data: { 
+            title: "My Works",
+            subtitle: "Portfolio Projects",
+            works: dynamicWorks
+          } 
+        }
+      ]
+    }
+  };
+  res.json(worksData);
+});
 app.get('/api/contact', (req, res) => res.json(data.contact));
 
 // Work detail routes
@@ -576,7 +747,43 @@ app.get('/api/work/learning-platform', (req, res) => {
 });
 
 app.get('/api/works/:slug', (req, res) => res.status(404).json({ error: 'Work not found' }));
-app.get('/api/admin/works', (req, res) => res.json([]));
+
+// Admin endpoints for managing works
+app.get('/api/admin/works', (req, res) => {
+  res.json(dynamicWorks);
+});
+
+app.post('/api/admin/works', (req, res) => {
+  const newWork = {
+    id: dynamicWorks.length + 1,
+    ...req.body,
+    featured: req.body.featured || false
+  };
+  dynamicWorks.push(newWork);
+  res.json(newWork);
+});
+
+app.put('/api/admin/works/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const index = dynamicWorks.findIndex(work => work.id === id);
+  if (index !== -1) {
+    dynamicWorks[index] = { ...dynamicWorks[index], ...req.body };
+    res.json(dynamicWorks[index]);
+  } else {
+    res.status(404).json({ error: 'Work not found' });
+  }
+});
+
+app.delete('/api/admin/works/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const index = dynamicWorks.findIndex(work => work.id === id);
+  if (index !== -1) {
+    const deletedWork = dynamicWorks.splice(index, 1)[0];
+    res.json(deletedWork);
+  } else {
+    res.status(404).json({ error: 'Work not found' });
+  }
+});
 
 // Admin interface
 app.get('/admin', (req, res) => {
