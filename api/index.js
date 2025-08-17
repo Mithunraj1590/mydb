@@ -101,46 +101,13 @@ const data = {
             ]
           }
         },
-        {
-          widget_type: "HomeWorks",
-          data: {
-            title: "Featured Works",
-            works: [
-              {
-                id: 1,
-                title: "Worktowander Dashboard",
-                category: "Web Application",
-                date: "2024",
-                image: "/images/works/work1.png",
-                description: "A comprehensive admin dashboard for managing work and travel bookings."
-              },
-              {
-                id: 2,
-                title: "E-commerce Platform",
-                category: "E-commerce",
-                date: "2024",
-                image: "/images/works/work2.png",
-                description: "Modern e-commerce platform with advanced features and payment integration."
-              },
-              {
-                id: 3,
-                title: "Task Management App",
-                category: "Management System",
-                date: "2024",
-                image: "/images/works/work3.png",
-                description: "Collaborative task management application with real-time updates."
-              },
-              {
-                id: 4,
-                title: "Learning Platform",
-                category: "Education",
-                date: "2024",
-                image: "/images/works/work4.png",
-                description: "Interactive learning platform with video courses and progress tracking."
-              }
-            ]
-          }
-        },
+                 {
+           widget_type: "HomeWorks",
+           data: {
+             title: "Featured Works",
+             works: dynamicWorks.slice(0, 4) // Show only first 4 works from dynamic data
+           }
+         },
         {
           "widget_type": "HomePrinciples",
           "data": {
@@ -319,79 +286,24 @@ const data = {
       ]
     }
   },
-  works: {
-    data: {
-      seo: {
-        metaTitle: "Works - Mithun raj",
-        metaDescription: "Portfolio of web development projects by Mithun raj"
-      },
-      widgets: [
-        { 
-          widget_type: "WorkList", 
-          data: { 
-            title: "My Works",
-            subtitle: "Portfolio Projects",
-            works: [
-              {
-                id: 1,
-                title: "Worktowander Dashboard",
-                category: "Web Application",
-                date: "2024",
-                image: "/images/works/work1.png",
-                description: "A comprehensive admin dashboard for managing work and travel bookings. Features include user management, booking system, analytics dashboard, and real-time notifications.",
-                featured: true
-              },
-              {
-                id: 2,
-                title: "E-commerce Platform",
-                category: "E-commerce",
-                date: "2024",
-                image: "/images/works/work2.png",
-                description: "Modern e-commerce platform with advanced features including payment integration, inventory management, and customer analytics.",
-                featured: true
-              },
-              {
-                id: 3,
-                title: "Task Management App",
-                category: "Management System",
-                date: "2024",
-                image: "/images/works/work3.png",
-                description: "Collaborative task management application with real-time updates, team collaboration, and progress tracking.",
-                featured: true
-              },
-              {
-                id: 4,
-                title: "Learning Platform",
-                category: "Education",
-                date: "2024",
-                image: "/images/works/work4.png",
-                description: "Interactive learning platform with video courses, progress tracking, and personalized learning paths.",
-                featured: true
-              },
-              {
-                id: 5,
-                title: "Weather App",
-                category: "Web Application",
-                date: "2024",
-                image: "/images/works/work5.png",
-                description: "Real-time weather application with location-based forecasts and interactive maps.",
-                featured: false
-              },
-              {
-                id: 6,
-                title: "Blog Platform",
-                category: "Content Management",
-                date: "2024",
-                image: "/images/works/work6.png",
-                description: "Modern blog platform with markdown support, SEO optimization, and social sharing features.",
-                featured: false
-              }
-            ]
-          } 
-        }
-      ]
-    }
-  },
+     works: {
+     data: {
+       seo: {
+         metaTitle: "Works - Mithun raj",
+         metaDescription: "Portfolio of web development projects by Mithun raj"
+       },
+       widgets: [
+         { 
+           widget_type: "WorkList", 
+           data: { 
+             title: "My Works",
+             subtitle: "Portfolio Projects",
+             works: [] // Empty array - will be populated by dynamic data
+           } 
+         }
+       ]
+     }
+   },
   contact: {
     data: {
       seo: {
