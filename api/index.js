@@ -405,7 +405,7 @@ app.post('/api/admin/works', (req, res) => {
             skills: req.body.techStack || [
               {
                 name: "React",
-                icon: "/images/skills/React_logo.svg"
+                image: "/images/skills/React_logo.svg"
               }
             ]
           }
@@ -491,7 +491,7 @@ app.put('/api/admin/works/:id', (req, res) => {
               skills: req.body.techStack || [
                 {
                   name: "React",
-                  icon: "/images/skills/React_logo.svg"
+                  image: "/images/skills/React_logo.svg"
                 }
               ]
             }
