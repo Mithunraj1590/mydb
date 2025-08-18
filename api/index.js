@@ -1,14 +1,54 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
+
+// File paths for data persistence
+const DATA_FILE = path.join(__dirname, '../data/works.json');
+const DETAILS_FILE = path.join(__dirname, '../data/work-details.json');
+
+// Ensure data directory exists
+const dataDir = path.dirname(DATA_FILE);
+if (!fs.existsSync(dataDir)) {
+  fs.mkdirSync(dataDir, { recursive: true });
+}
+
+// Load saved data on startup
+function loadSavedData() {
+  try {
+    if (fs.existsSync(DATA_FILE)) {
+      const worksData = fs.readFileSync(DATA_FILE, 'utf8');
+      dynamicWorks = JSON.parse(worksData);
+    }
+    if (fs.existsSync(DETAILS_FILE)) {
+      const detailsData = fs.readFileSync(DETAILS_FILE, 'utf8');
+      dynamicWorkDetails = JSON.parse(detailsData);
+    }
+  } catch (error) {
+    console.log('No saved data found or error loading data:', error.message);
+  }
+}
+
+// Save data to files
+function saveData() {
+  try {
+    fs.writeFileSync(DATA_FILE, JSON.stringify(dynamicWorks, null, 2));
+    fs.writeFileSync(DETAILS_FILE, JSON.stringify(dynamicWorkDetails, null, 2));
+  } catch (error) {
+    console.error('Error saving data:', error);
+  }
+}
 
 // Dynamic works array for admin management - starts empty
 let dynamicWorks = [];
 
 // Dynamic work detail pages - starts empty
 let dynamicWorkDetails = {};
+
+// Load saved data on startup
+loadSavedData();
 
 // Middleware
 app.use(cors());
@@ -405,7 +445,7 @@ app.post('/api/admin/works', (req, res) => {
             skills: req.body.techStack || [
               {
                 name: "React",
-                image: "/images/skills/React_logo.svg"
+                icon: "/images/skills/React_logo.svg"
               }
             ]
           }
@@ -442,6 +482,9 @@ app.post('/api/admin/works', (req, res) => {
       ]
     }
   };
+  
+  // Save data to files
+  saveData();
   
   res.json(newWork);
 });
@@ -491,7 +534,7 @@ app.put('/api/admin/works/:id', (req, res) => {
               skills: req.body.techStack || [
                 {
                   name: "React",
-                  image: "/images/skills/React_logo.svg"
+                  icon: "/images/skills/React_logo.svg"
                 }
               ]
             }
@@ -529,6 +572,9 @@ app.put('/api/admin/works/:id', (req, res) => {
       }
     };
     
+    // Save data to files
+    saveData();
+    
     res.json(dynamicWorks[index]);
   } else {
     res.status(404).json({ error: 'Work not found' });
@@ -546,6 +592,9 @@ app.delete('/api/admin/works/:id', (req, res) => {
     if (dynamicWorkDetails[slug]) {
       delete dynamicWorkDetails[slug];
     }
+    
+    // Save data to files
+    saveData();
     
     res.json(deletedWork);
   } else {
