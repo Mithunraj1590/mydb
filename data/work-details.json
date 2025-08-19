@@ -71,5 +71,74 @@
         }
       ]
     }
+  },
+  "university-library": {
+    "data": {
+      "seo": {
+        "metaTitle": "University Library",
+        "metaDescription": "A modern university library management system built with Next.js, featuring user authentication, book cataloging, borrowing workflows, and admin dashboard for managing users and book requests."
+      },
+      "slug": "university-library",
+      "widgets": [
+        {
+          "widget_type": "WorkDetailBanner",
+          "data": {
+            "title": "University Library",
+            "description": "A modern university library management system built with Next.js, featuring user authentication, book cataloging, borrowing workflows, and admin dashboard for managing users and book requests.",
+            "category": "Management System",
+            "date": "2025",
+            "image": "/images/works/work3.png",
+            "featured": true,
+            "url": "https://college-library-six.vercel.app",
+            "github": ""
+          }
+        },
+        {
+          "widget_type": "AboutSkills",
+          "data": {
+            "title": "Tech Stack",
+            "skills": [
+              {
+                "name": "Next js",
+                "icon": "/images/skills/Nextjs_logo.svg"
+              },
+              {
+                "name": "Type Script",
+                "icon": "/images/skills/Typescript_logo.svg"
+              }
+            ]
+          }
+        },
+        {
+          "widget_type": "WorkDetail",
+          "data": {
+            "title": "ABOUT",
+            "main_title": "Project",
+            "description": "This is a comprehensive University Library Management System that provides a complete digital solution for managing library operations in an educational institution. The application is built using modern web technologies and follows best practices for scalability, security, and user experience.\nKey Features:\nFor Students/Users:\nSecure authentication system with role-based access control\nBrowse and search through an extensive book catalog\nRequest book borrowing with approval workflow\nView personal borrowing history and current loans\nProfile management with account status tracking\nResponsive design for mobile and desktop access\nFor Administrators:\nComprehensive admin dashboard with analytics\nUser management system for approving new accounts\nBook catalog management (add, edit, delete books)\nBorrowing request approval workflow\nUser status management (pending, approved, rejected)\nAdvanced book search and filtering capabilities\nTechnical Architecture:\nThe system is built on a modern tech stack including Next.js 15 with App Router, React 19, and TypeScript for type safety. It uses Neon Database (PostgreSQL) with Drizzle ORM for robust data management, NextAuth.js for secure authentication, and Tailwind CSS for a beautiful, responsive UI.\nInfrastructure highlights:\nServerless PostgreSQL database for scalability\nRedis caching for improved performance\nRate limiting for API protection\nImageKit integration for book cover management\nBackground job processing for workflow automation\nSecurity & Performance:\nJWT-based authentication with bcrypt password hashing\nRole-based access control (Admin/User)\nAPI rate limiting to prevent abuse\nOptimized image delivery and caching\nType-safe database operations with Drizzle ORM\nThe application demonstrates modern web development practices with a focus on user experience, security, and maintainability, making it suitable for educational institutions looking to digitize their library operations.",
+            "details": [
+              {
+                "title": "Challenges",
+                "description": "Building a scalable university library system that handles complex user workflows, secure authentication, and real-time book management while maintaining performance and user experience."
+              },
+              {
+                "title": "Solutions",
+                "description": "Implemented a modern full-stack architecture using Next.js 15 with App Router, Neon PostgreSQL database with Drizzle ORM for type-safe operations, NextAuth.js for secure role-based authentication, and Tailwind CSS for responsive design. Added Redis caching, rate limiting, and ImageKit for optimized performance."
+              },
+              {
+                "title": "Results",
+                "description": "A robust library management platform with seamless user/admin workflows, secure authentication system, real-time book cataloging, efficient borrowing approval process, and responsive UI that scales from mobile to desktop, providing a complete digital solution for university library operations."
+              }
+            ]
+          }
+        },
+        {
+          "widget_type": "ImageGrid",
+          "data": {
+            "title": "Project Gallery",
+            "images": []
+          }
+        }
+      ]
+    }
   }
 }
