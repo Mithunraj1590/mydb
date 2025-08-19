@@ -2,8 +2,30 @@
   "travel-agency": {
     "data": {
       "seo": {
-        "metaTitle": "Travel Agency",
-        "metaDescription": "A modern travel platform that combines work and vacation, offering curated workation experiences for teams and individuals seeking to work remotely from stunning destinations around the world."
+        "metaTitle": "Travel Agency - Project Details | Mithun Raj Portfolio",
+        "metaDescription": "A modern travel platform that combines work and vacation, offering curated workation experiences for teams and individuals seeking to work remotely from stunning destinations around the world. View technologies used, challenges solved, and project outcomes.",
+        "metaKeywords": "travel agency, workation platform, project details, case study, web development, web application, portfolio project, next.js, typescript, tailwind",
+        "metaImage": {
+          "url": "/images/works/work1.png",
+          "alt": "Travel Agency - Project Screenshot"
+        },
+        "metaUrl": "https://mithun-three.vercel.app/work/travel-agency",
+        "metaType": "article",
+        "metaAuthor": "Mithun Raj",
+        "metaRobots": "index, follow",
+        "metaViewport": "width=device-width, initial-scale=1.0",
+        "metaCharset": "UTF-8",
+        "metaLanguage": "en",
+        "metaThemeColor": "#000000",
+        "twitterCard": "summary_large_image",
+        "twitterSite": "@mithunraj",
+        "twitterCreator": "@mithunraj",
+        "openGraphTitle": "Travel Agency - Project Details | Mithun Raj Portfolio",
+        "openGraphDescription": "A modern travel platform that combines work and vacation, offering curated workation experiences for teams and individuals seeking to work remotely from stunning destinations around the world.",
+        "openGraphImage": "/images/works/work1.png",
+        "openGraphUrl": "https://mithun-three.vercel.app/work/travel-agency",
+        "openGraphType": "article",
+        "openGraphSiteName": "Mithun Raj Portfolio"
       },
       "slug": "travel-agency",
       "widgets": [
@@ -75,8 +97,30 @@
   "university-library": {
     "data": {
       "seo": {
-        "metaTitle": "University Library",
-        "metaDescription": "A modern university library management system built with Next.js, featuring user authentication, book cataloging, borrowing workflows, and admin dashboard for managing users and book requests."
+        "metaTitle": "University Library - Project Details | Mithun Raj Portfolio",
+        "metaDescription": "A modern university library management system built with Next.js, featuring user authentication, book cataloging, borrowing workflows, and admin dashboard for managing users and book requests. View technologies used, challenges solved, and project outcomes.",
+        "metaKeywords": "university library, library management system, project details, case study, web development, management system, portfolio project, next.js, typescript",
+        "metaImage": {
+          "url": "/images/works/work3.png",
+          "alt": "University Library - Project Screenshot"
+        },
+        "metaUrl": "https://mithun-three.vercel.app/work/university-library",
+        "metaType": "article",
+        "metaAuthor": "Mithun Raj",
+        "metaRobots": "index, follow",
+        "metaViewport": "width=device-width, initial-scale=1.0",
+        "metaCharset": "UTF-8",
+        "metaLanguage": "en",
+        "metaThemeColor": "#000000",
+        "twitterCard": "summary_large_image",
+        "twitterSite": "@mithunraj",
+        "twitterCreator": "@mithunraj",
+        "openGraphTitle": "University Library - Project Details | Mithun Raj Portfolio",
+        "openGraphDescription": "A modern university library management system built with Next.js, featuring user authentication, book cataloging, borrowing workflows, and admin dashboard for managing users and book requests.",
+        "openGraphImage": "/images/works/work3.png",
+        "openGraphUrl": "https://mithun-three.vercel.app/work/university-library",
+        "openGraphType": "article",
+        "openGraphSiteName": "Mithun Raj Portfolio"
       },
       "slug": "university-library",
       "widgets": [
@@ -144,8 +188,30 @@
   "e-tutor": {
     "data": {
       "seo": {
-        "metaTitle": "E Tutor",
-        "metaDescription": "E-Tutor is a modern online learning platform built with Vue.js that connects students with expert instructors. It features a comprehensive course catalog with advanced filtering, user authentication, and an intuitive interface for discovering and enrolling in courses across various subjects and skill levels"
+        "metaTitle": "E Tutor - Project Details | Mithun Raj Portfolio",
+        "metaDescription": "E-Tutor is a modern online learning platform built with Vue.js that connects students with expert instructors. It features a comprehensive course catalog with advanced filtering, user authentication, and an intuitive interface for discovering and enrolling in courses across various subjects and skill levels. View technologies used, challenges solved, and project outcomes.",
+        "metaKeywords": "e tutor, online learning platform, project details, case study, web development, education, portfolio project, vue.js, sass",
+        "metaImage": {
+          "url": "/images/works/work4.png",
+          "alt": "E Tutor - Project Screenshot"
+        },
+        "metaUrl": "https://mithun-three.vercel.app/work/e-tutor",
+        "metaType": "article",
+        "metaAuthor": "Mithun Raj",
+        "metaRobots": "index, follow",
+        "metaViewport": "width=device-width, initial-scale=1.0",
+        "metaCharset": "UTF-8",
+        "metaLanguage": "en",
+        "metaThemeColor": "#000000",
+        "twitterCard": "summary_large_image",
+        "twitterSite": "@mithunraj",
+        "twitterCreator": "@mithunraj",
+        "openGraphTitle": "E Tutor - Project Details | Mithun Raj Portfolio",
+        "openGraphDescription": "E-Tutor is a modern online learning platform built with Vue.js that connects students with expert instructors. It features a comprehensive course catalog with advanced filtering, user authentication, and an intuitive interface for discovering and enrolling in courses across various subjects and skill levels.",
+        "openGraphImage": "/images/works/work4.png",
+        "openGraphUrl": "https://mithun-three.vercel.app/work/e-tutor",
+        "openGraphType": "article",
+        "openGraphSiteName": "Mithun Raj Portfolio"
       },
       "slug": "e-tutor",
       "widgets": [
@@ -209,8 +275,30 @@
   "furniro": {
     "data": {
       "seo": {
-        "metaTitle": "Furniro",
-        "metaDescription": "A modern, responsive e-commerce frontend built with React 19, featuring a sleek design with dark/light theme support, smooth animations, and comprehensive product management capabilities."
+        "metaTitle": "Furniro - Project Details | Mithun Raj Portfolio",
+        "metaDescription": "A modern, responsive e-commerce frontend built with React 19, featuring a sleek design with dark/light theme support, smooth animations, and comprehensive product management capabilities. View technologies used, challenges solved, and project outcomes.",
+        "metaKeywords": "furniro, e-commerce frontend, project details, case study, web development, e-commerce, portfolio project, react 19, framer motion",
+        "metaImage": {
+          "url": "/images/works/work2.png",
+          "alt": "Furniro - Project Screenshot"
+        },
+        "metaUrl": "https://mithun-three.vercel.app/work/furniro",
+        "metaType": "article",
+        "metaAuthor": "Mithun Raj",
+        "metaRobots": "index, follow",
+        "metaViewport": "width=device-width, initial-scale=1.0",
+        "metaCharset": "UTF-8",
+        "metaLanguage": "en",
+        "metaThemeColor": "#000000",
+        "twitterCard": "summary_large_image",
+        "twitterSite": "@mithunraj",
+        "twitterCreator": "@mithunraj",
+        "openGraphTitle": "Furniro - Project Details | Mithun Raj Portfolio",
+        "openGraphDescription": "A modern, responsive e-commerce frontend built with React 19, featuring a sleek design with dark/light theme support, smooth animations, and comprehensive product management capabilities.",
+        "openGraphImage": "/images/works/work2.png",
+        "openGraphUrl": "https://mithun-three.vercel.app/work/furniro",
+        "openGraphType": "article",
+        "openGraphSiteName": "Mithun Raj Portfolio"
       },
       "slug": "furniro",
       "widgets": [
