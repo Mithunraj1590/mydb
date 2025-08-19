@@ -1,0 +1,75 @@
+{
+  "travel-agency": {
+    "data": {
+      "seo": {
+        "metaTitle": "Travel Agency",
+        "metaDescription": "A modern travel platform that combines work and vacation, offering curated workation experiences for teams and individuals seeking to work remotely from stunning destinations around the world."
+      },
+      "slug": "travel-agency",
+      "widgets": [
+        {
+          "widget_type": "WorkDetailBanner",
+          "data": {
+            "title": "Travel Agency",
+            "description": "A modern travel platform that combines work and vacation, offering curated workation experiences for teams and individuals seeking to work remotely from stunning destinations around the world.",
+            "category": "Web Application",
+            "date": "2024",
+            "image": "/images/works/work1.png",
+            "featured": true,
+            "url": "https://worktowander.vercel.app/",
+            "github": "https://github.com/Mithunraj1590/worktowander"
+          }
+        },
+        {
+          "widget_type": "AboutSkills",
+          "data": {
+            "title": "Tech Stack",
+            "skills": [
+              {
+                "name": "Next js",
+                "icon": "/images/skills/Nextjs_logo.svg"
+              },
+              {
+                "name": "Type Script",
+                "icon": "/images/skills/Typescript_logo.svg"
+              },
+              {
+                "name": "Tailwind",
+                "icon": "/images/skills/Tailwind_logo.svg"
+              }
+            ]
+          }
+        },
+        {
+          "widget_type": "WorkDetail",
+          "data": {
+            "title": "ABOUT",
+            "main_title": "Project",
+            "description": "Travel Agency is a cutting-edge travel agency platform built with Next.js that revolutionizes the concept of remote work by offering premium workation experiences. The platform bridges the gap between professional productivity and travel exploration, enabling teams and individuals to work from some of the world's most inspiring destinations.\nKey Features:\n🎯 Curated Workation Experiences\nHandpicked destinations specifically designed for remote work\nPre-vetted accommodations with reliable internet and workspace amenities\nLocal experiences that blend work productivity with cultural immersion\n�� Global Destination Network\nFeatured destinations including Barcelona, Australia, Japan, Greece, and London\nComprehensive destination guides with ratings, activities, and local insights\nCustomizable travel packages tailored to team sizes and preferences\n👥 Team-Focused Solutions\nSpecialized workation planning for teams of 5-10, 10-30, 30-60, and 60+ members\nCustom activity planning and team-building experiences\nSeamless booking and coordination for group travel\n💼 Professional Infrastructure\nAdmin dashboard for travel management and analytics\nUser management and booking tracking systems\nComprehensive analytics and reporting capabilities\n🎨 Modern User Experience\nStunning, responsive design with smooth animations and transitions\nInteractive elements including parallax scrolling and particle effects\nMobile-optimized interface for on-the-go planning\n🔧 Technical Excellence\nBuilt with Next.js 14 and TypeScript for optimal performance\nFramer Motion animations for engaging user interactions\nTailwind CSS for modern, responsive styling\nComprehensive admin panel for business operations\nWhether you're a startup looking to boost team morale, a remote company seeking new ways to collaborate, or an individual wanting to work from paradise, WanderWork provides the infrastructure, expertise, and curated experiences to make your workation dreams a reality. Transform your work environment from mundane to magnificent with destinations that inspire creativity, foster collaboration, and create unforgettable memories.",
+            "details": [
+              {
+                "title": "Challenges",
+                "description": "Creating a modern travel agency platform that combines engaging user experience with powerful administrative functionality while handling complex workation booking workflows for teams of varying sizes."
+              },
+              {
+                "title": "Solutions",
+                "description": "Implemented a Next.js 15 and React 19 architecture with TypeScript for robust development, integrated Framer Motion for smooth animations, built a dual-interface system with public-facing travel platform and comprehensive admin dashboard, and incorporated Chart.js for data visualization and analytics."
+              },
+              {
+                "title": "Results",
+                "description": "Delivered a visually stunning, performant travel platform with seamless booking experiences, responsive design across all devices, powerful admin capabilities for business management, and engaging user interactions that drive conversions and user satisfaction."
+              }
+            ]
+          }
+        },
+        {
+          "widget_type": "ImageGrid",
+          "data": {
+            "title": "Project Gallery",
+            "images": []
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,186 +1,205 @@
-# Portfolio API with SQLite Database
+# Portfolio API with GitHub-as-Database
 
-A modern portfolio API built with Express.js and SQLite, featuring a beautiful admin interface for managing portfolio works.
+A dynamic portfolio API that uses GitHub as a database for persistent data storage. Works are stored in JSON files in the repository and persist across deployments.
 
 ## 🚀 Features
 
-- **SQLite Database**: Persistent data storage with automatic initialization
-- **Same API Structure**: Maintains the exact same API response format as the original `db.json`
-- **Admin GUI**: Beautiful web interface for managing portfolio works
-- **Featured Works**: Mark works as featured to display on homepage (max 4)
-- **Vercel Ready**: Optimized for serverless deployment on Vercel
-- **CORS Enabled**: Ready for frontend integration
+- **Dynamic Work Management**: Add, edit, and delete works through admin panel
+- **GitHub-as-Database**: Data stored in JSON files in the repository
+- **Persistent Storage**: Works survive server restarts and deployments
+- **Admin Interface**: Web-based GUI for managing portfolio works
+- **Vercel Deployment**: Optimized for serverless deployment
 
 ## 📁 Project Structure
 
 ```
-mydb/
-├── server.js          # Main Express server
-├── database.js        # SQLite database operations
-├── seed.js           # Database seeding script
-├── package.json      # Dependencies and scripts
-├── vercel.json       # Vercel deployment config
+portfolio-api/
+├── api/
+│   └── index.js              # Main serverless function
+├── data/
+│   ├── works.json            # All works data
+│   └── work-details.json     # Work detail pages
 ├── public/
-│   └── admin.html    # Admin interface
-└── portfolio.db      # SQLite database (auto-generated)
+│   └── admin.html            # Admin interface
+├── scripts/
+│   └── commit-data.js        # Data commit script
+├── package.json
+├── vercel.json
+└── README.md
 ```
 
-## 🛠️ Installation
+## 🛠️ Setup
 
-1. **Install dependencies:**
+1. **Install Dependencies**:
    ```bash
    npm install
    ```
 
-2. **Seed the database with sample data:**
+2. **Development**:
    ```bash
-   npm run seed
+   npm run dev
    ```
 
-3. **Start the server:**
+3. **Deploy to Vercel**:
    ```bash
-   npm start
+   vercel --prod
    ```
 
-## 📡 API Endpoints
+## 📊 Data Storage System
 
-### Public API (Same structure as original db.json)
+### How It Works
 
-- `GET /api/homepage` - Homepage data with featured works (max 4)
+1. **Local Development**: Data is saved to JSON files in the `data/` directory
+2. **Vercel Production**: Data is loaded from JSON files but cannot be written (read-only filesystem)
+3. **Persistence**: Data persists through Git commits and deployments
+
+### Data Files
+
+- **`data/works.json`**: Array of all works
+- **`data/work-details.json`**: Object with work detail pages keyed by slug
+
+## 🔧 API Endpoints
+
+### Public Endpoints
+- `GET /api/homepage` - Homepage data with featured works
+- `GET /api/works` - All works listing
+- `GET /api/work/:slug` - Individual work detail page
 - `GET /api/about` - About page data
-- `GET /api/works` - All works for works page
-- `GET /api/works/:slug` - Individual work details
-- `GET /api/contact` - Contact information
+- `GET /api/contact` - Contact page data
 
-### Admin API
-
-- `GET /api/admin/works` - Get all works for admin
-- `POST /api/admin/works` - Add new work
+### Admin Endpoints
+- `GET /api/admin/works` - List all works
+- `GET /api/admin/works/:id` - Get specific work
+- `POST /api/admin/works` - Create new work
 - `PUT /api/admin/works/:id` - Update work
 - `DELETE /api/admin/works/:id` - Delete work
 
 ### Admin Interface
+- `GET /admin` - Web-based admin panel
 
-- `GET /admin` - Web-based admin interface
+## 💾 Data Persistence Workflow
 
-## 🎨 Admin Interface
+### Adding Works (Development)
+1. Go to `/admin` in your browser
+2. Fill out the work form
+3. Submit - data is automatically saved to JSON files
+4. Run `npm run commit-data` to commit to GitHub
 
-Access the admin interface at `/admin` to:
+### Adding Works (Production)
+1. Go to `/admin` in your browser
+2. Fill out the work form
+3. Submit - data is stored in memory temporarily
+4. **Important**: Run `npm run commit-data` locally to save permanently
 
-- **View all works** in a beautiful table format
-- **Add new works** with a comprehensive form
-- **Edit existing works** with pre-filled data
-- **Delete works** with confirmation
-- **Mark works as featured** for homepage display
-- **Real-time statistics** (total works, featured works, API status)
+### Manual Data Commit
+```bash
+# Check for changes
+git status
 
-## 📊 Database Schema
+# Add data files
+git add data/works.json data/work-details.json
 
-### Works Table
-```sql
-CREATE TABLE works (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  title TEXT NOT NULL,
-  date TEXT NOT NULL,
-  category TEXT NOT NULL,
-  description TEXT NOT NULL,
-  longDescription TEXT,
-  image TEXT NOT NULL,
-  gallery TEXT,           -- JSON array
-  techStack TEXT,         -- JSON array
-  features TEXT,          -- JSON array
-  liveUrl TEXT,
-  githubUrl TEXT,
-  challenges TEXT,
-  solutions TEXT,
-  featured BOOLEAN DEFAULT 0,
-  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+# Commit
+git commit -m "Update portfolio data"
+
+# Push to GitHub
+git push
 ```
 
-## 🔧 Configuration
+## 🎯 Admin Panel Features
 
-### Environment Variables
-- `PORT` - Server port (default: 3001)
+### Work Fields
+- **Title**: Work title
+- **Slug**: URL-friendly identifier (auto-generated if empty)
+- **Category**: Work category
+- **Date**: Completion date
+- **Image**: Main image URL/path
+- **Description**: Short description
+- **Long Description**: Detailed project description
+- **Live URL**: Link to live project
+- **GitHub URL**: Link to source code
+- **Featured**: Mark as featured work
 
-### Vercel Deployment
-The project is configured for Vercel deployment with:
-- Serverless function optimization
-- Proper routing configuration
-- Static file serving
+### Advanced Fields
+- **Tech Stack**: Array of technologies with icons
+- **Challenges**: Technical challenges faced
+- **Solutions**: How challenges were solved
+- **Results**: Project outcomes
+- **Gallery**: Multiple project images
+
+## 🔄 Data Synchronization
+
+### Development Environment
+- ✅ **Auto-save**: Data automatically saved to files
+- ✅ **Immediate persistence**: Changes saved instantly
+- ✅ **Git integration**: Easy to commit changes
+
+### Production Environment (Vercel)
+- ⚠️ **Memory-only**: Data stored in memory during function execution
+- ⚠️ **Temporary**: Data lost on server restart
+- ✅ **Load from files**: Data loaded from committed JSON files
+- ✅ **Manual commit**: Use `npm run commit-data` to save changes
 
 ## 📝 Usage Examples
 
-### Adding a New Work via API
-```javascript
-const response = await fetch('/api/admin/works', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    title: "My New Project",
-    date: "2024",
-    category: "Web Application",
-    description: "A brief description",
-    longDescription: "A detailed description",
-    image: "/images/works/project.png",
-    gallery: JSON.stringify(["/image1.jpg", "/image2.jpg"]),
-    techStack: JSON.stringify([
-      { name: "React", icon: "/icons/react.svg" }
-    ]),
-    features: JSON.stringify(["Feature 1", "Feature 2"]),
-    liveUrl: "https://project.com",
-    githubUrl: "https://github.com/user/project",
-    challenges: "Project challenges",
-    solutions: "Project solutions",
-    featured: true
-  })
-});
-```
+### Create a New Work
+1. Visit `/admin`
+2. Fill out the form with:
+   - Title: "My Amazing Project"
+   - Slug: "my-amazing-project"
+   - Category: "Web Application"
+   - Tech Stack: React, Node.js, MongoDB
+   - Challenges: "Complex state management"
+   - Solutions: "Used Redux for state management"
+   - Results: "Improved performance by 50%"
+3. Submit the form
+4. Run `npm run commit-data` to save permanently
 
-### Fetching Homepage Data
-```javascript
-const response = await fetch('/api/homepage');
-const data = await response.json();
-// Returns the same structure as original db.json
-```
+### Edit Existing Work
+1. Visit `/admin`
+2. Click "Edit" on any work
+3. Modify the fields
+4. Submit changes
+5. Run `npm run commit-data` to save permanently
 
-## 🚀 Deployment
+## 🚨 Important Notes
 
-### Local Development
-```bash
-npm run dev
-```
+### Vercel Limitations
+- **Read-only filesystem**: Cannot write files in production
+- **Cold starts**: Data resets on function restart
+- **Memory-only**: Production data is temporary
 
-### Vercel Deployment
-1. Push to GitHub
-2. Connect to Vercel
-3. Deploy automatically
+### Best Practices
+1. **Always commit data**: Run `npm run commit-data` after changes
+2. **Test locally**: Use `npm run dev` for development
+3. **Backup data**: Keep local copies of important data
+4. **Version control**: All data changes are tracked in Git
 
-The API will be available at your Vercel domain with the same endpoints.
+## 🔧 Troubleshooting
 
-## 🔄 Migration from db.json
+### Data Not Persisting
+- Check if you ran `npm run commit-data`
+- Verify data files are committed to Git
+- Check Vercel deployment logs
 
-The API maintains 100% compatibility with your existing frontend code. The response structure is identical to the original `db.json` format.
+### Admin Panel Not Working
+- Ensure all dependencies are installed
+- Check browser console for errors
+- Verify API endpoints are accessible
 
-## 📱 Features
+### API Errors
+- Check Vercel function logs
+- Verify JSON file syntax
+- Ensure all required fields are provided
 
-- **Responsive Design**: Admin interface works on all devices
-- **Real-time Updates**: Changes reflect immediately
-- **Form Validation**: Comprehensive input validation
-- **Error Handling**: User-friendly error messages
-- **Search & Filter**: Easy work management
-- **Image Preview**: Visual work representation
+## 📈 Future Improvements
 
-## 🎯 Key Benefits
-
-1. **Scalable**: SQLite database can handle thousands of works
-2. **Maintainable**: Clean code structure with separation of concerns
-3. **User-Friendly**: Beautiful admin interface for non-technical users
-4. **Performance**: Optimized queries and caching
-5. **Secure**: Input validation and sanitization
-6. **Flexible**: Easy to extend with new features
+- [ ] Database integration (MongoDB, Supabase)
+- [ ] Image upload functionality
+- [ ] User authentication for admin
+- [ ] API rate limiting
+- [ ] Data validation middleware
+- [ ] Backup/restore functionality
 
 ## 🤝 Contributing
 
@@ -188,8 +207,9 @@ The API maintains 100% compatibility with your existing frontend code. The respo
 2. Create a feature branch
 3. Make your changes
 4. Test thoroughly
-5. Submit a pull request
+5. Commit and push
+6. Create a pull request
 
 ## 📄 License
 
-This project is open source and available under the MIT License.
+MIT License - feel free to use this project for your own portfolio!

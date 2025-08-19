@@ -5,39 +5,55 @@ const fs = require('fs');
 
 const app = express();
 
-// File paths for data persistence
+// File paths for data persistence in repository
 const DATA_FILE = path.join(__dirname, '../data/works.json');
 const DETAILS_FILE = path.join(__dirname, '../data/work-details.json');
 
-// Ensure data directory exists
-const dataDir = path.dirname(DATA_FILE);
-if (!fs.existsSync(dataDir)) {
-  fs.mkdirSync(dataDir, { recursive: true });
-}
-
-// Load saved data on startup
+// Load saved data on startup (read-only operation)
 function loadSavedData() {
   try {
     if (fs.existsSync(DATA_FILE)) {
       const worksData = fs.readFileSync(DATA_FILE, 'utf8');
       dynamicWorks = JSON.parse(worksData);
+      console.log(`Loaded ${dynamicWorks.length} works from ${DATA_FILE}`);
+    } else {
+      console.log('No works data file found, starting with empty array');
     }
+    
     if (fs.existsSync(DETAILS_FILE)) {
       const detailsData = fs.readFileSync(DETAILS_FILE, 'utf8');
       dynamicWorkDetails = JSON.parse(detailsData);
+      console.log(`Loaded ${Object.keys(dynamicWorkDetails).length} work details from ${DETAILS_FILE}`);
+    } else {
+      console.log('No work details file found, starting with empty object');
     }
   } catch (error) {
-    console.log('No saved data found or error loading data:', error.message);
+    console.log('Error loading saved data:', error.message);
+    console.log('Starting with empty data arrays');
   }
 }
 
-// Save data to files
+// Save data to files (will work in development, but not in Vercel production)
 function saveData() {
   try {
+    // Ensure data directory exists
+    const dataDir = path.dirname(DATA_FILE);
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+    
+    // Save works data
     fs.writeFileSync(DATA_FILE, JSON.stringify(dynamicWorks, null, 2));
+    console.log(`Saved ${dynamicWorks.length} works to ${DATA_FILE}`);
+    
+    // Save work details data
     fs.writeFileSync(DETAILS_FILE, JSON.stringify(dynamicWorkDetails, null, 2));
+    console.log(`Saved ${Object.keys(dynamicWorkDetails).length} work details to ${DETAILS_FILE}`);
+    
+    return true;
   } catch (error) {
-    console.error('Error saving data:', error);
+    console.error('Error saving data (this is expected in Vercel production):', error.message);
+    return false;
   }
 }
 
@@ -483,10 +499,14 @@ app.post('/api/admin/works', (req, res) => {
     }
   };
   
-  // Save data to files
-  saveData();
+  // Try to save data (will work in development, not in Vercel production)
+  const saved = saveData();
   
-  res.json(newWork);
+  res.json({
+    ...newWork,
+    saved: saved,
+    message: saved ? 'Work saved successfully' : 'Work added to memory (will be lost on restart)'
+  });
 });
 
 app.put('/api/admin/works/:id', (req, res) => {
@@ -572,10 +592,14 @@ app.put('/api/admin/works/:id', (req, res) => {
       }
     };
     
-    // Save data to files
-    saveData();
+    // Try to save data
+    const saved = saveData();
     
-    res.json(dynamicWorks[index]);
+    res.json({
+      ...dynamicWorks[index],
+      saved: saved,
+      message: saved ? 'Work updated and saved successfully' : 'Work updated in memory (will be lost on restart)'
+    });
   } else {
     res.status(404).json({ error: 'Work not found' });
   }
@@ -593,10 +617,14 @@ app.delete('/api/admin/works/:id', (req, res) => {
       delete dynamicWorkDetails[slug];
     }
     
-    // Save data to files
-    saveData();
+    // Try to save data
+    const saved = saveData();
     
-    res.json(deletedWork);
+    res.json({
+      ...deletedWork,
+      saved: saved,
+      message: saved ? 'Work deleted and saved successfully' : 'Work deleted from memory (will be lost on restart)'
+    });
   } else {
     res.status(404).json({ error: 'Work not found' });
   }
@@ -614,3 +642,14 @@ app.get('/', (req, res) => {
 
 // Export for Vercel serverless function
 module.exports = app;
+
+// Start the server if this file is run directly (not as a module)
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`🚀 Portfolio API server running on port ${PORT}`);
+    console.log(`📊 Loaded ${dynamicWorks.length} works from database`);
+    console.log(`🔗 Admin panel: http://localhost:${PORT}/admin`);
+    console.log(`🌐 API base: http://localhost:${PORT}/api`);
+  });
+}

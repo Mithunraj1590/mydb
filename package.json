@@ -6,7 +6,9 @@
     "cors": "^2.8.5"
   },
   "scripts": {
-    "dev": "vercel dev",
-    "build": "echo 'Build completed'"
+    "dev": "node api/index.js",
+    "start": "node api/index.js",
+    "build": "echo 'Build completed'",
+    "commit-data": "node scripts/commit-data.js"
   }
 }
