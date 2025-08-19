@@ -140,5 +140,135 @@
         }
       ]
     }
+  },
+  "e-tutor": {
+    "data": {
+      "seo": {
+        "metaTitle": "E Tutor",
+        "metaDescription": "E-Tutor is a modern online learning platform built with Vue.js that connects students with expert instructors. It features a comprehensive course catalog with advanced filtering, user authentication, and an intuitive interface for discovering and enrolling in courses across various subjects and skill levels"
+      },
+      "slug": "e-tutor",
+      "widgets": [
+        {
+          "widget_type": "WorkDetailBanner",
+          "data": {
+            "title": "E Tutor",
+            "description": "E-Tutor is a modern online learning platform built with Vue.js that connects students with expert instructors. It features a comprehensive course catalog with advanced filtering, user authentication, and an intuitive interface for discovering and enrolling in courses across various subjects and skill levels",
+            "category": "Education",
+            "date": "2024",
+            "image": "/images/works/work4.png",
+            "featured": true,
+            "url": "https://mithun-etutor-frontend.vercel.app/",
+            "github": ""
+          }
+        },
+        {
+          "widget_type": "AboutSkills",
+          "data": {
+            "title": "Tech Stack",
+            "skills": [
+              {
+                "name": "Vue js",
+                "icon": "/images/skills/Vuejs_logo.svg"
+              }
+            ]
+          }
+        },
+        {
+          "widget_type": "WorkDetail",
+          "data": {
+            "title": "ABOUT",
+            "main_title": "Project",
+            "description": "E-Tutor is a comprehensive online learning platform designed to revolutionize the way people access education. Built with cutting-edge web technologies including Vue.js 3, Vite, and modern CSS with Sass, this platform provides a seamless learning experience for both students and instructors.\nKey Features:\nFor Students:\nAdvanced Course Discovery: Browse thousands of courses with sophisticated filtering options including category, tools, ratings, course level, price range, and duration\nSmart Search: Intelligent search functionality with real-time suggestions and course recommendations\nCourse Previews: Detailed course information with instructor profiles, ratings, student counts, and pricing\nResponsive Design: Optimized for all devices from mobile phones to desktop computers\nUser Authentication: Secure sign-up and sign-in system for personalized learning experiences\nFor Instructors:\nCourse Management: Easy-to-use interface for creating and managing course listings\nStudent Analytics: Track course performance and student engagement\nProfessional Profiles: Showcase expertise and build credibility with detailed instructor profiles\nTechnical Excellence:\nModern Architecture: Built with Vue.js 3 Composition API for optimal performance and maintainability\nScalable Design: Component-based architecture ensuring code reusability and easy maintenance\nAdvanced Styling: Custom Sass framework with responsive design patterns and consistent theming\nPerformance Optimized: Fast loading times with Vite build system and efficient asset management\nCross-Platform: Works seamlessly across all modern browsers and devices\nLearning Categories:\nThe platform covers diverse subjects including Development, Business, Finance & Accounting, IT & Software, Design, Marketing, Personal Development, and many more. Each category features subcategories with detailed course counts and filtering options.\nQuality Assurance:\nRating System: 5-star rating system with detailed reviews\nCourse Levels: From beginner to expert, ensuring appropriate content for all skill levels\nPrice Flexibility: Both free and paid courses with transparent pricing\nDuration Options: Courses ranging from 1-7 days to 6-12 months to fit any learning schedule\nE-Tutor represents the future of online education, combining powerful technology with user-centric design to create an engaging and effective learning environment for everyone.",
+            "details": [
+              {
+                "title": "Challenges",
+                "description": "The project faced significant technical hurdles including legacy Sass deprecation warnings from outdated @import syntax that were causing build issues. The complex filter functionality required a modular component architecture that wasn't initially in place. Additionally, specific UI/UX design requirements for the filter sidebar and course listing needed careful implementation. Ensuring responsive design consistency across all devices and managing filter states between components presented further complexity"
+              },
+              {
+                "title": "Solutions",
+                "description": "We modernized the entire Sass architecture by migrating from deprecated @import to modern @use syntax and replaced the deprecated darken() function with color.adjust(). The filter functionality was completely refactored into a dedicated FilterSidebar component for better modularity. We implemented collapsible filter sections with proper styling and interactive elements. A custom responsive framework was built using mixins and breakpoint systems. The component communication was handled through Vue's event-driven architecture using $emit for clean parent-child interactions."
+              },
+              {
+                "title": "Results",
+                "description": "The transformation resulted in a completely clean build system with all Sass deprecation warnings eliminated and significantly improved build performance. The codebase became highly modular with reusable components and clean separation of concerns. The user experience was dramatically enhanced with an intuitive filter interface featuring expandable sections and real-time updates. The platform now works seamlessly across all devices with fully responsive design. The final codebase is highly maintainable with clear component hierarchy and comprehensive documentation, providing a solid foundation for future development and scalability."
+              }
+            ]
+          }
+        },
+        {
+          "widget_type": "ImageGrid",
+          "data": {
+            "title": "Project Gallery",
+            "images": []
+          }
+        }
+      ]
+    }
+  },
+  "furniro": {
+    "data": {
+      "seo": {
+        "metaTitle": "Furniro",
+        "metaDescription": "A modern, responsive e-commerce frontend built with React 19, featuring a sleek design with dark/light theme support, smooth animations, and comprehensive product management capabilities."
+      },
+      "slug": "furniro",
+      "widgets": [
+        {
+          "widget_type": "WorkDetailBanner",
+          "data": {
+            "title": "Furniro",
+            "description": "A modern, responsive e-commerce frontend built with React 19, featuring a sleek design with dark/light theme support, smooth animations, and comprehensive product management capabilities.",
+            "category": "E-commerce",
+            "date": "2025",
+            "image": "/images/works/work2.png",
+            "featured": true,
+            "url": "https://furniro-ecom.vercel.app/",
+            "github": ""
+          }
+        },
+        {
+          "widget_type": "AboutSkills",
+          "data": {
+            "title": "Tech Stack",
+            "skills": [
+              {
+                "name": "React js",
+                "icon": "/images/skills/React_logo.svg"
+              }
+            ]
+          }
+        },
+        {
+          "widget_type": "WorkDetail",
+          "data": {
+            "title": "ABOUT",
+            "main_title": "Project",
+            "description": "This is a sophisticated e-commerce frontend application built with cutting-edge web technologies. The project showcases a modern, user-centric approach to online retail with the following key features:\nCore Features\n�� Product Management\nComprehensive product catalog with filtering and search\nDetailed product pages with image galleries\nCategory-based browsing with \"Browse The Range\" feature\nWishlist functionality for saved items\nShopping cart with persistent state\n🎨 Design & UX\nModern, minimalist design with clean aesthetics\nDark/light theme toggle with CSS custom properties\nResponsive design optimized for all devices\nSmooth page transitions and micro-interactions\nCustom animations using Framer Motion\nBeautiful product galleries with Swiper integration\n🛒 Shopping Experience\nIntuitive product filtering and sorting\nAdvanced search functionality\nShopping cart with quantity management\nCheckout form with validation\nOrder tracking and management\n�� User Interface\nHeader with navigation and user account access\nFooter with comprehensive site links\nBreadcrumb navigation for easy site traversal\nModal dialogs for login and product details\nNotification system for user feedback\n🔧 Technical Excellence\nModular component architecture\nCSS modules for scoped styling\nOptimized build process with webpack\nSEO-friendly with React Helmet\nPerformance optimized with code splitting\nAccessibility considerations\nThis e-commerce platform represents a modern approach to online retail, combining powerful functionality with elegant design to create an engaging shopping experience for users while maintaining high performance and accessibility standards.",
+            "details": [
+              {
+                "title": "Challenges",
+                "description": "The project faced critical build failures due to React 19 compatibility issues with react-helmet-async and CSS compilation errors caused by invalid syntax in SCSS files. The CSS minimizer was encountering \"Unexpected '/'\" errors from problematic comment syntax, while Swiper integration was failing due to CSS modules generating invalid selectors with special characters like "
+              },
+              {
+                "title": "Solutions",
+                "description": "To resolve the dependency conflicts, we implemented --legacy-peer-deps flag during npm installation to bypass peer dependency restrictions. For the CSS compilation issues, we systematically converted all problematic // comments to proper /* */ CSS comments across multiple SCSS files and replaced CSS custom properties with hardcoded values in the main stylesheet. The Swiper integration was fixed by updating the configuration to use standard class names with :global() wrapper in SCSS, eliminating the invalid selector generation."
+              },
+              {
+                "title": "Results",
+                "description": "The project now builds successfully with all features fully functional, including responsive design, theme switching, and interactive carousels. The build process completes without errors, producing optimized CSS and JavaScript bundles. The codebase is now maintainable with proper syntax standards, ensuring long-term stability and easier future development while maintaining the modern e-commerce functionality and sleek user interface design."
+              }
+            ]
+          }
+        },
+        {
+          "widget_type": "ImageGrid",
+          "data": {
+            "title": "Project Gallery",
+            "images": []
+          }
+        }
+      ]
+    }
   }
 }
