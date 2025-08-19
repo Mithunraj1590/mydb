@@ -75,6 +75,32 @@ app.use(express.static(path.join(__dirname, '../public')));
 const data = {
   about: {
     data: {
+      seo: {
+        metaTitle: "About - Mithun Raj | Frontend Developer & Digital Designer",
+        metaDescription: "Learn more about Mithun Raj, a passionate Frontend Developer and Digital Designer with 3+ years of experience in web development, React, Next.js, and modern technologies.",
+        metaKeywords: "about mithun raj, frontend developer, web developer, react developer, digital designer, career, experience, skills, portfolio",
+        metaImage: {
+          url: "/images/about-me.png",
+          alt: "Mithun Raj - About Me"
+        },
+        metaUrl: "https://mithun-three.vercel.app/about",
+        metaType: "website",
+        metaAuthor: "Mithun Raj",
+        metaRobots: "index, follow",
+        metaViewport: "width=device-width, initial-scale=1.0",
+        metaCharset: "UTF-8",
+        metaLanguage: "en",
+        metaThemeColor: "#000000",
+        twitterCard: "summary_large_image",
+        twitterSite: "@mithunraj",
+        twitterCreator: "@mithunraj",
+        openGraphTitle: "About - Mithun Raj | Frontend Developer & Digital Designer",
+        openGraphDescription: "Learn more about Mithun Raj, a passionate Frontend Developer and Digital Designer with 3+ years of experience.",
+        openGraphImage: "/images/about-me.png",
+        openGraphUrl: "https://mithun-three.vercel.app/about",
+        openGraphType: "website",
+        openGraphSiteName: "Mithun Raj Portfolio"
+      },
       "widgets": [
         {
           "widget_type": "AboutBanner",
@@ -201,8 +227,30 @@ const data = {
   contact: {
     data: {
       seo: {
-        metaTitle: "Contact - Mithun raj",
-        metaDescription: "Get in touch with Mithun raj for web development projects"
+        metaTitle: "Contact - Mithun Raj | Get In Touch for Web Development Projects",
+        metaDescription: "Get in touch with Mithun Raj for web development projects, consulting, design, and development services. Available for freelance work and collaboration opportunities.",
+        metaKeywords: "contact mithun raj, hire frontend developer, web development services, freelance developer, react developer, consulting, collaboration",
+        metaImage: {
+          url: "/images/contact-banner.jpg",
+          alt: "Contact Mithun Raj - Frontend Developer"
+        },
+        metaUrl: "https://mithun-three.vercel.app/contact",
+        metaType: "website",
+        metaAuthor: "Mithun Raj",
+        metaRobots: "index, follow",
+        metaViewport: "width=device-width, initial-scale=1.0",
+        metaCharset: "UTF-8",
+        metaLanguage: "en",
+        metaThemeColor: "#000000",
+        twitterCard: "summary_large_image",
+        twitterSite: "@mithunraj",
+        twitterCreator: "@mithunraj",
+        openGraphTitle: "Contact - Mithun Raj | Get In Touch for Web Development Projects",
+        openGraphDescription: "Get in touch with Mithun Raj for web development projects, consulting, design, and development services.",
+        openGraphImage: "/images/contact-banner.jpg",
+        openGraphUrl: "https://mithun-three.vercel.app/contact",
+        openGraphType: "website",
+        openGraphSiteName: "Mithun Raj Portfolio"
       },
       widgets: [
         { 
@@ -232,8 +280,30 @@ app.get('/api/homepage', (req, res) => {
   const homepageData = {
     data: {
       seo: { 
-        metaTitle: "Mithun raj", 
-        metaDescription: "Portfolio site" 
+        metaTitle: "Mithun Raj - Frontend Developer & Digital Designer",
+        metaDescription: "Frontend Developer and Digital Designer building scalable, accessible, and technically tuned brands on the web. Specializing in React, Next.js, and modern web technologies.",
+        metaKeywords: "frontend developer, web developer, react developer, next.js, digital designer, portfolio, web development, UI/UX, JavaScript, TypeScript",
+        metaImage: {
+          url: "/images/portfolio-banner.jpg",
+          alt: "Mithun Raj - Frontend Developer Portfolio"
+        },
+        metaUrl: "https://mithun-three.vercel.app",
+        metaType: "website",
+        metaAuthor: "Mithun Raj",
+        metaRobots: "index, follow",
+        metaViewport: "width=device-width, initial-scale=1.0",
+        metaCharset: "UTF-8",
+        metaLanguage: "en",
+        metaThemeColor: "#000000",
+        twitterCard: "summary_large_image",
+        twitterSite: "@mithunraj",
+        twitterCreator: "@mithunraj",
+        openGraphTitle: "Mithun Raj - Frontend Developer & Digital Designer",
+        openGraphDescription: "Frontend Developer and Digital Designer building scalable, accessible, and technically tuned brands on the web.",
+        openGraphImage: "/images/portfolio-banner.jpg",
+        openGraphUrl: "https://mithun-three.vercel.app",
+        openGraphType: "website",
+        openGraphSiteName: "Mithun Raj Portfolio"
       },
       widgets: [
         { 
@@ -349,8 +419,30 @@ app.get('/api/works', (req, res) => {
   const worksData = {
     data: {
       seo: {
-        metaTitle: "Works - Mithun raj",
-        metaDescription: "Portfolio of web development projects by Mithun raj"
+        metaTitle: "Works & Projects - Mithun Raj Portfolio",
+        metaDescription: "Explore my portfolio of web development projects, digital design work, and technical solutions. View case studies, technologies used, and project outcomes.",
+        metaKeywords: "portfolio projects, web development projects, case studies, react projects, next.js projects, digital design, web applications",
+        metaImage: {
+          url: "/images/works-banner.jpg",
+          alt: "Mithun Raj - Portfolio Works and Projects"
+        },
+        metaUrl: "https://mithun-three.vercel.app/works",
+        metaType: "website",
+        metaAuthor: "Mithun Raj",
+        metaRobots: "index, follow",
+        metaViewport: "width=device-width, initial-scale=1.0",
+        metaCharset: "UTF-8",
+        metaLanguage: "en",
+        metaThemeColor: "#000000",
+        twitterCard: "summary_large_image",
+        twitterSite: "@mithunraj",
+        twitterCreator: "@mithunraj",
+        openGraphTitle: "Works & Projects - Mithun Raj Portfolio",
+        openGraphDescription: "Explore my portfolio of web development projects, digital design work, and technical solutions.",
+        openGraphImage: "/images/works-banner.jpg",
+        openGraphUrl: "https://mithun-three.vercel.app/works",
+        openGraphType: "website",
+        openGraphSiteName: "Mithun Raj Portfolio"
       },
       widgets: [
         { 
@@ -436,8 +528,30 @@ app.post('/api/admin/works', (req, res) => {
   dynamicWorkDetails[slug] = {
     data: {
       seo: {
-        metaTitle: req.body.title,
-        metaDescription: req.body.description || `Project details for ${req.body.title}`
+        metaTitle: `${req.body.title} - Project Details | Mithun Raj Portfolio`,
+        metaDescription: req.body.description || `Detailed project information for ${req.body.title}. View technologies used, challenges solved, and project outcomes.`,
+        metaKeywords: `${req.body.title.toLowerCase()}, project details, case study, web development, ${req.body.category?.toLowerCase() || 'web application'}, portfolio project`,
+        metaImage: {
+          url: req.body.image || "/images/works/default.png",
+          alt: `${req.body.title} - Project Screenshot`
+        },
+        metaUrl: `https://mithun-three.vercel.app/work/${slug}`,
+        metaType: "article",
+        metaAuthor: "Mithun Raj",
+        metaRobots: "index, follow",
+        metaViewport: "width=device-width, initial-scale=1.0",
+        metaCharset: "UTF-8",
+        metaLanguage: "en",
+        metaThemeColor: "#000000",
+        twitterCard: "summary_large_image",
+        twitterSite: "@mithunraj",
+        twitterCreator: "@mithunraj",
+        openGraphTitle: `${req.body.title} - Project Details | Mithun Raj Portfolio`,
+        openGraphDescription: req.body.description || `Detailed project information for ${req.body.title}.`,
+        openGraphImage: req.body.image || "/images/works/default.png",
+        openGraphUrl: `https://mithun-three.vercel.app/work/${slug}`,
+        openGraphType: "article",
+        openGraphSiteName: "Mithun Raj Portfolio"
       },
       slug: slug,
       widgets: [
@@ -529,8 +643,30 @@ app.put('/api/admin/works/:id', (req, res) => {
     dynamicWorkDetails[slug] = {
       data: {
         seo: {
-          metaTitle: req.body.title || dynamicWorks[index].title,
-          metaDescription: req.body.description || `Project details for ${req.body.title || dynamicWorks[index].title}`
+          metaTitle: `${req.body.title || dynamicWorks[index].title} - Project Details | Mithun Raj Portfolio`,
+          metaDescription: req.body.description || `Detailed project information for ${req.body.title || dynamicWorks[index].title}. View technologies used, challenges solved, and project outcomes.`,
+          metaKeywords: `${(req.body.title || dynamicWorks[index].title).toLowerCase()}, project details, case study, web development, ${(req.body.category || dynamicWorks[index].category || 'web application').toLowerCase()}, portfolio project`,
+          metaImage: {
+            url: req.body.image || dynamicWorks[index].image || "/images/works/default.png",
+            alt: `${req.body.title || dynamicWorks[index].title} - Project Screenshot`
+          },
+          metaUrl: `https://mithun-three.vercel.app/work/${slug}`,
+          metaType: "article",
+          metaAuthor: "Mithun Raj",
+          metaRobots: "index, follow",
+          metaViewport: "width=device-width, initial-scale=1.0",
+          metaCharset: "UTF-8",
+          metaLanguage: "en",
+          metaThemeColor: "#000000",
+          twitterCard: "summary_large_image",
+          twitterSite: "@mithunraj",
+          twitterCreator: "@mithunraj",
+          openGraphTitle: `${req.body.title || dynamicWorks[index].title} - Project Details | Mithun Raj Portfolio`,
+          openGraphDescription: req.body.description || `Detailed project information for ${req.body.title || dynamicWorks[index].title}.`,
+          openGraphImage: req.body.image || dynamicWorks[index].image || "/images/works/default.png",
+          openGraphUrl: `https://mithun-three.vercel.app/work/${slug}`,
+          openGraphType: "article",
+          openGraphSiteName: "Mithun Raj Portfolio"
         },
         slug: slug,
         widgets: [
