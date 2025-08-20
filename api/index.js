@@ -46,8 +46,14 @@ function parseLongDescription(longDescription) {
     const trimmedParagraph = paragraph.trim();
     if (!trimmedParagraph) return;
     
-    // Check if this paragraph starts with an emoji and looks like a section header
-    if (trimmedParagraph.match(/^[🎯👥💼🎨🔧🌍]/)) {
+    // Check for markdown-style headings
+    if (trimmedParagraph.startsWith('# ')) {
+      htmlContent += `<h1>${trimmedParagraph.substring(2)}</h1>`;
+    } else if (trimmedParagraph.startsWith('## ')) {
+      htmlContent += `<h2>${trimmedParagraph.substring(3)}</h2>`;
+    } else if (trimmedParagraph.startsWith('### ')) {
+      htmlContent += `<h3>${trimmedParagraph.substring(4)}</h3>`;
+    } else if (trimmedParagraph.match(/^[🎯👥💼🎨🔧🌍]/)) {
       // This is a section header with emoji
       htmlContent += `<h3>${trimmedParagraph}</h3>`;
     } else if (trimmedParagraph.match(/^[A-Z][A-Z\s]+:$/)) {
@@ -96,8 +102,19 @@ function parseLongDescription(longDescription) {
         }
       }
     } else {
-      // This is a regular paragraph
-      htmlContent += `<p>${trimmedParagraph}</p>`;
+      // This is a regular paragraph - process markdown-style formatting
+      let processedParagraph = trimmedParagraph;
+      
+      // Convert **bold** to <strong>
+      processedParagraph = processedParagraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      
+      // Convert *italic* to <em>
+      processedParagraph = processedParagraph.replace(/\*(.*?)\*/g, '<em>$1</em>');
+      
+      // Convert `code` to <code>
+      processedParagraph = processedParagraph.replace(/`(.*?)`/g, '<code>$1</code>');
+      
+      htmlContent += `<p>${processedParagraph}</p>`;
     }
   });
   
@@ -107,6 +124,8 @@ function parseLongDescription(longDescription) {
 // Save data to files (will work in development, but not in Vercel production)
 function saveData() {
   try {
+    console.log('💾 Attempting to save data...');
+    
     // Ensure data directory exists
     const dataDir = path.dirname(DATA_FILE);
     if (!fs.existsSync(dataDir)) {
@@ -115,15 +134,15 @@ function saveData() {
     
     // Save works data
     fs.writeFileSync(DATA_FILE, JSON.stringify(dynamicWorks, null, 2));
-    console.log(`Saved ${dynamicWorks.length} works to ${DATA_FILE}`);
+    console.log(`✅ Saved ${dynamicWorks.length} works to ${DATA_FILE}`);
     
     // Save work details data
     fs.writeFileSync(DETAILS_FILE, JSON.stringify(dynamicWorkDetails, null, 2));
-    console.log(`Saved ${Object.keys(dynamicWorkDetails).length} work details to ${DETAILS_FILE}`);
+    console.log(`✅ Saved ${Object.keys(dynamicWorkDetails).length} work details to ${DETAILS_FILE}`);
     
     return true;
   } catch (error) {
-    console.error('Error saving data (this is expected in Vercel production):', error.message);
+    console.error('❌ Error saving data (this is expected in Vercel production):', error.message);
     return false;
   }
 }
@@ -657,7 +676,7 @@ app.post('/api/admin/works', (req, res) => {
           data: {
             "title": "ABOUT",
             "main_title": "Project",
-            description: parseLongDescription(req.body.longDescription) || req.body.description || "",
+                          description: req.body.longDescription || req.body.description || "",
             details: [
               {
                 title: "Challenges",
@@ -699,8 +718,14 @@ app.put('/api/admin/works/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const index = dynamicWorks.findIndex(work => work.id === id);
   if (index !== -1) {
+    console.log('🔄 Updating work with ID:', id);
+    console.log('📝 Request body longDescription length:', req.body.longDescription ? req.body.longDescription.length : 'undefined');
+    console.log('📝 Original work longDescription length:', dynamicWorks[index].longDescription ? dynamicWorks[index].longDescription.length : 'undefined');
+    
     // Update the work in the array
     dynamicWorks[index] = { ...dynamicWorks[index], ...req.body };
+    
+    console.log('✅ Updated work longDescription length:', dynamicWorks[index].longDescription ? dynamicWorks[index].longDescription.length : 'undefined');
     
     // Also update the corresponding work detail page
     const slug = req.body.slug || dynamicWorks[index].slug || dynamicWorks[index].title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -773,7 +798,7 @@ app.put('/api/admin/works/:id', (req, res) => {
             data: {
               "title": "ABOUT",
               "main_title": "Project",
-              description: parseLongDescription(req.body.longDescription) || req.body.description || "",
+              description: req.body.longDescription || req.body.description || "",
               details: [
                 {
                   title: "Challenges",
