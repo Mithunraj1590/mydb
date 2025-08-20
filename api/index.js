@@ -631,6 +631,7 @@ app.post('/api/admin/works', (req, res) => {
           data: {
             title: req.body.title,
             description: req.body.description || "",
+            longDescription: req.body.longDescription || "",
             category: req.body.category || "Web Application",
             date: req.body.date || "2024",
             image: req.body.image || "/images/works/default.png",
@@ -657,7 +658,6 @@ app.post('/api/admin/works', (req, res) => {
             "title": "ABOUT",
             "main_title": "Project",
             description: parseLongDescription(req.body.longDescription) || req.body.description || "",
-            longDescription: req.body.longDescription || "",
             details: [
               {
                 title: "Challenges",
@@ -747,6 +747,7 @@ app.put('/api/admin/works/:id', (req, res) => {
             data: {
               title: req.body.title || dynamicWorks[index].title,
               description: req.body.description || "",
+              longDescription: req.body.longDescription || "",
               category: req.body.category || "Web Application",
               date: req.body.date || "2024",
               image: req.body.image || "/images/works/default.png",
@@ -773,7 +774,6 @@ app.put('/api/admin/works/:id', (req, res) => {
               "title": "ABOUT",
               "main_title": "Project",
               description: parseLongDescription(req.body.longDescription) || req.body.description || "",
-              longDescription: req.body.longDescription || "",
               details: [
                 {
                   title: "Challenges",
